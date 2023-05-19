@@ -1,6 +1,7 @@
 
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
+import { UserScores } from './pages/Scores';
 import React,{ useState } from 'react';
 import './App.css';
 
@@ -15,6 +16,7 @@ setForm(formName);
      { 
      currentForm === 'Login' ? <Login onFormSwitch={toggleForm}/> : <SignUp onFormSwitch={toggleForm}/>
      }
+     {/* <UserScores /> */}
     </div>
   );
 }
