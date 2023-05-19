@@ -1,6 +1,8 @@
+// HOPEFULLY ON SMALL SCREENS
+
 import React, { useState } from 'react';
 
-const NavburgerMenu = () => {
+const Navburger = () => {
   // Initially set to false while menu is closed
   const [isNavOpen, setNavOpen] = useState(false);
   
@@ -21,5 +23,5 @@ const NavburgerMenu = () => {
   );
 };
 
-export default NavburgerMenu;
+export default Navburger;
 
