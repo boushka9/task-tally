@@ -1,3 +1,4 @@
+
 const { User, Task } = require("../models");
 
 const resolvers = {
@@ -48,3 +49,4 @@ me: async (parent, args, context) => {
     throw new AuthenticationError('You need to be logged in!');
   }
 }};
+
