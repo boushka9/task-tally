@@ -1,7 +1,6 @@
-
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
-import { UserScores } from './pages/Scores';
+// import { UserScores } from './pages/Scores';
 import React,{ useState } from 'react';
 import './App.css';
 
@@ -22,3 +21,4 @@ setForm(formName);
 }
 
 export default App;
+
