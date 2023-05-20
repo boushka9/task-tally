@@ -17,7 +17,7 @@ export const Login = (props) => {
       <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Example@gmail.com"/>
       <label forhtml="password">Password:</label>
       <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder=""/>
-      <button>Login</button>
+      <button className="login-btn">Login</button>
     </form>
     {/* This will change pages to sign up will have this changed to link with the api later */}
     <button className="link-btn" onClick={() => props.onFormSwitch('SignUp')}> Don't have an account? Sign Up Here</button>

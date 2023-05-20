@@ -5,8 +5,8 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <nav>
-      <ul>
+    <nav className='navBar'>
+      <ul className='navBarList'>
         <li>
           <a href="/">To-Do</a>
         </li>
@@ -14,7 +14,7 @@ const Navbar = () => {
           <a href="/to-done">To-Done</a>
         </li>
         <li>
-          <a href="/scores">scores</a>
+          <a href="/scores">Scores</a>
         </li>
         <li>
           <a href="/login">Logout</a>
