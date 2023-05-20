@@ -1,21 +1,49 @@
 :root {
-  --primary: rgb(255, 160, 122)
+  --orange: rgb(255, 160, 122);
+  --dark: #05284c;
+  --medium: #05668d;
+  --jade: #57cc99;
+  --bright: #80ed99;
+  --pale: #c7f9cc;
+  --light: #fafdff;
 }
 .App {
+  background-image: url('./assets/speckle.png');
+  background-color: var(--light);
   text-align: center;
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  align-items: center;
+  justify-content: space-around;
+  color: var(--dark);
+  width: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  color: black;
-  background-color: var(--primary) ;
+  align-items: center;
+}
+
+.logo {
+  width: 35%;
 }
 
 .form-container, .login-form, .signUp-form{
   display: flex;
   flex-direction: column;
   border: #008B8B;
-  
+  background-color: var(--orange);
+  color: var(--dark);
+  width: 100%;
+}
+
+.login-sign {
+  background-color: var(--orange);
+  padding: 20px;
+  border-radius: 15px;
+  align-self: center;
 }
 
 label {
@@ -28,19 +56,23 @@ input {
   margin: 0.5rem 0;
   padding: 1rem;
   border: none;
-  border-radius: 5%;
+  border-radius: 10px;
 }
 
 button {
   border: none;
-  background-color: white;
-  padding: 20px;
+  background-color: var(--jade);
+  padding: 15px;
   border-radius: 10px;
-  cursor: pointer;
+}
+
+.login-btn, .sign-up {
+  font-size: 20px;
+  color: var(--dark);
 }
 
 button:hover {
-  background-color: #008B8B;
+  background-color: var(--bright);
 }
 
 .link-btn {
@@ -52,4 +84,73 @@ button:hover {
 .link-btn:hover {
   background: none;
   font-display: none;
+  color: var(--dark)
+}
+
+/* NavBar Styling */
+.navBar {
+  align-self: flex-end;
+  display: contents;
+}
+
+.navBarList {
+  display: flex;
+  margin-right: 2%;
+  padding: 0;
+}
+
+.navBarList li {
+  list-style-type: none;
+  margin: 0 15px 0 15px;
+}
+
+.navBarList li a {
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.navBarList li a:hover {
+  color: var(--jade);
+}
+
+@media screen and (min-width: 740px) {
+
+  .logo {
+    width: 25%;
+    margin-left: 15px;
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .navBar {
+    margin-right: 15px;
+  }
+
+  .navBarList li {
+    font-size: 20px;
+  }
+  
+}
+
+@media screen and (min-width: 992px) {
+
+  .App {
+    justify-content: flex-start;
+  }
+  .logo {
+    margin-top: 15px;
+    width: 15%;
+  }
+
+  .navBarList li {
+    font-size: 25px;
+  }
+
+  .login-sign {
+    margin-top: 2%;
+    width: 30%;
+  }
 }

@@ -15,6 +15,11 @@ const typeDefs = gql`
         body: String
     }
 
+    type Auth {
+        token: ID!
+        profile: Profile
+    }
+
     type Query {
         users: [User]
         tasks: [Task]

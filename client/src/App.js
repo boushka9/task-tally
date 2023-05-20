@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import logo from '././assets/logo-1.png'
 import { Login } from './pages/Login';
@@ -17,12 +18,11 @@ setForm(formName);
     <div className="App">
       <ApolloProvider client={client}>
         <Router>
-      <header>
-        <img className='logo' src={logo} alt='Logo'/>
-        <NavBar />
-      </header> 
-      <Routes>
-               
+          <header>
+            <img className='logo' src={logo} alt='Logo'/>
+            <NavBar />
+          </header> 
+          <Routes> 
               <Route 
                 path="/login" 
                 element={<Login />} 
@@ -39,13 +39,14 @@ setForm(formName);
                 path="/scores" 
                 element={<Scores />} 
               />
-            </Routes>
+          </Routes>
       </Router>
      <div className='login-sign'>
         { 
           currentForm === 'Login' ? <Login onFormSwitch={toggleForm}/> : <SignUp onFormSwitch={toggleForm}/>
         }
      </div> 
+
      </ApolloProvider>
     </div>
   );
