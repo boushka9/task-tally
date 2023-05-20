@@ -18,6 +18,9 @@ const resolvers = {
           }
           throw new AuthenticationError('You need to be logged in!');
         },
+      //getTotalScore:
+
+      //getHighScore:
     },
 
 
@@ -32,9 +35,13 @@ Mutation: {
 // Add user
 
 // Add task 
-
+addTask: async (parent, { scoreValue, title, body }) => {
+  return Task.create({ scoreValue, title, body });
+},
 // remove/delete task
-
+removeTask: async (parent, { taskId }) => {
+  return Task.findOneAndDelete({ _id: taskId });
+},
 //get scores
 
 
@@ -49,4 +56,3 @@ me: async (parent, args, context) => {
     throw new AuthenticationError('You need to be logged in!');
   }
 }};
-
