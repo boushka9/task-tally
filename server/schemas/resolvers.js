@@ -1,4 +1,4 @@
-
+const { AuthenticationError } = require('apollo-server-express');
 const { User, Task } = require("../models");
 
 const resolvers = {
