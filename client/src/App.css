@@ -12,9 +12,10 @@
   background-color: var(--light);
   text-align: center;
   display: flex;
+  flex: 1;
   flex-direction: column;
   min-height: 100vh;
-  justify-content: space-around;
+  justify-content: space-evenly;
   color: var(--dark);
   width: 100%;
 }
@@ -28,6 +29,7 @@ header {
 
 .logo {
   width: 35%;
+  margin-bottom: 10px;
 }
 
 .form-container, .login-form, .signUp-form{
@@ -111,6 +113,12 @@ button:hover {
 
 .navBarList li a:hover {
   color: var(--jade);
+}
+
+.App-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 @media screen and (min-width: 740px) {

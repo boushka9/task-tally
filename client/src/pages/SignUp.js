@@ -19,7 +19,7 @@ export const SignUp = (props) => {
       <label forhtml="name">Enter Name</label>
       {/* the onChange listener will allow reach to display in real time the changes that are occurring */}
       <input value={name} onChange={(e) => setName(e.target.value)}/>
-      <label forHtml="email">Email:</label>
+      <label forhtml="email">Email:</label>
       <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Example@gmail.com"/>
       <label forhtml="password">Password:</label>
       <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder=""/>
@@ -32,3 +32,5 @@ export const SignUp = (props) => {
 
   )
 }
+
+export default SignUp;
