@@ -14,10 +14,14 @@ const userSchema = new Schema(
             type: String,
             required: true,
           },
-        toDos: [taskSchema],
-        //toDO do todones,
+        toDos: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Task',
+        }],
+        
+        //toDO completed toDos,
 
-        //toDo scores,
+        //toDo scores from completed toDos,
 
         //need virtuals for high scores and total score
 

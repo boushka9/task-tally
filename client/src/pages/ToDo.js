@@ -6,6 +6,8 @@ const TodoListPage = () => {
   const [todos, setTodos] = useState([]);// Initialize the state for todos array (empty to hold all todos)
   const [newTodo, setNewTodo] = useState(''); //Initialize new todo items
 
+  // query route to return all todos in user - set todo useState to 
+
     // Get value of entered new todo use it for setNewTodo
   const inputChange = (e) => {
     setNewTodo(e.target.value);
@@ -16,6 +18,7 @@ const TodoListPage = () => {
   const addTodo = () => {
     if (newTodo.trim() !== '') {
       setTodos([...todos, { text: newTodo, checked: false }]);
+      // pass back mutation to update the users todo array w entire new array (make sure to add new todo to entire array, not the filtered array for unchecked)
       setNewTodo('');
     }
   };
@@ -34,6 +37,7 @@ const TodoListPage = () => {
   const deleteTodo = (item) => {
     const updatedTodos = [...todos];
     updatedTodos.splice(item, 1);
+    // Pass  update method and overwrite users previous todo data 
     setTodos(updatedTodos);
   };
 

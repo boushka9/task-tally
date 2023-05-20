@@ -44,7 +44,7 @@ const handleChange = (event) => {
       <input name="name" onChange={handleChange} id="name"/>
       <label forHtml="email">Email:</label>
       <input name="email" onChange={handleChange} type="email" placeholder="Example@gmail.com"/>
-      <label forhtml="password">Password:</label>
+      <label forhtml="password">Password:</label> 
       <input name="password" onChange={handleChange} type="password" placeholder=""/>
       <button>Sign Up</button>
     </form>
