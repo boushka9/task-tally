@@ -2,8 +2,12 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const taskSchema = new Schema({
-    //dateCompleted:
-
+    //time created
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
     scoreValue: {
         type: Number,
         required: true,
@@ -19,7 +23,14 @@ const taskSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         ref: 'User',
+    },
+    //to-dos that are done. 
+    checked: {
+        type: Boolean,
+        required: true,
     }
 })
+//initialize the task model
+const Task = model("toDos", taskSchema)
 
-module.exports = taskSchema;
+module.exports = Task;
