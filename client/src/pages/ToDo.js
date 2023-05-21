@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // Pass in component
 import ToDoItem from '../components/ToDo';
 
-const TodoListPage = () => {
+const TodoList = () => {
   const [todos, setTodos] = useState([]);// Initialize the state for todos array (empty to hold all todos)
   const [newTodo, setNewTodo] = useState(''); //Initialize new todo items
 
@@ -68,5 +68,5 @@ const TodoListPage = () => {
   );
 };
 
-export default TodoListPage;
+export default TodoList;
 

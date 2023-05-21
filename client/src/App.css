@@ -12,9 +12,9 @@
   background-color: var(--light);
   text-align: center;
   display: flex;
+  flex: 1;
   flex-direction: column;
   min-height: 100vh;
-  justify-content: space-around;
   color: var(--dark);
   width: 100%;
 }
@@ -28,6 +28,7 @@ header {
 
 .logo {
   width: 35%;
+  margin-bottom: 10px;
 }
 
 .form-container, .login-form, .signUp-form{
@@ -44,6 +45,7 @@ header {
   padding: 20px;
   border-radius: 15px;
   align-self: center;
+  margin-top: 2%;
 }
 
 label {
@@ -113,7 +115,13 @@ button:hover {
   color: var(--jade);
 }
 
-@media screen and (min-width: 740px) {
+.App-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 700px) {
 
   .logo {
     width: 25%;
@@ -150,7 +158,6 @@ button:hover {
   }
 
   .login-sign {
-    margin-top: 2%;
     width: 30%;
   }
 }

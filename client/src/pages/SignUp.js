@@ -41,12 +41,12 @@ const handleChange = (event) => {
     <form onSubmit={onSubmit} className="signUp-form"> 
       <label forhtml="name">Enter Name</label>
       {/* the onChange listener will allow reach to display in real time the changes that are occurring */}
-      <input name="name" onChange={handleChange} id="name"/>
-      <label forHtml="email">Email:</label>
-      <input name="email" onChange={handleChange} type="email" placeholder="Example@gmail.com"/>
-      <label forhtml="password">Password:</label> 
-      <input name="password" onChange={handleChange} type="password" placeholder=""/>
-      <button>Sign Up</button>
+      <input value={name} onChange={(e) => setName(e.target.value)}/>
+      <label forhtml="email">Email:</label>
+      <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Example@gmail.com"/>
+      <label forhtml="password">Password:</label>
+      <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder=""/>
+      <button className="sign-up">Sign Up</button>
     </form>
     {/* This will link to the login page when its clicked */}
     <button className="link-btn" onClick={() => props.onFormSwitch('Login')}>Already have an account? Login In</button>
@@ -55,3 +55,5 @@ const handleChange = (event) => {
 
   )
 }
+
+export default SignUp;
