@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const taskSchema = require('./Task');
+const { match } = require('assert');
 
 const userSchema = new Schema(
     {
@@ -16,18 +16,58 @@ const userSchema = new Schema(
           },
         toDos: [{
             type: Schema.Types.ObjectId,
-            ref: 'Task',
+            ref: 'toDos',
         }],
         
-        //toDO completed toDos,
 
-        //toDo scores from completed toDos,
 
         //need virtuals for high scores and total score
 
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
     }
 );
 
+//virtual to seperate to-dos from to-dos that have been checked as done
+userSchema.virtual("checkedToDos", {
+    ref: 'toDos',
+    localField: '_id',
+    foreignField: 'userId',
+    justOne: false,
+    match: { checked: true }
+});
+
+
 const User = model('User', userSchema);
 
-module.exports = User;
+module.exports = { 
+    User, 
+    //populates the completed toDos
+populateChecked: (userId) => {
+   return User.findById(userId).populate("checkedToDos")
+    .exec();
+},
+    //calculates the total score based on the point value provided in Task.js
+calculateTotalScore: (userId) => {
+    return User.findById(userId)
+      .populate({
+        path: 'checkedToDos',
+        select: 'scoreValue',
+      })
+      .exec()
+      .then((user) => {
+        //the map function iterates over the scores from the array of checkedToDos
+        //the reduce function tallies the accumulated values
+        const checkedToDos = user.checkedToDos;
+        const totalScore = checkedToDos
+          .map((todo) => todo.scoreValue)
+          .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        return totalScore;
+      });
+  },
+};
+
+//now exported: User, populateChecked, and calculateTotalScore
