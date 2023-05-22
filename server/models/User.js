@@ -38,7 +38,7 @@ const userSchema = new Schema(
 userSchema.virtual("checkedToDos", {
     ref: 'toDos',
     localField: '_id',
-    foreignField: 'userId',
+    foreignField: 'username',
     justOne: false,
     match: { checked: true }
 });
@@ -49,13 +49,13 @@ const User = model('User', userSchema);
 module.exports = { 
     User, 
     //populates the completed toDos
-populateChecked: (userId) => {
-   return User.findById(userId).populate("checkedToDos")
+populateChecked: (username) => {
+   return User.findById(username).populate("checkedToDos")
     .exec();
 },
     //calculates the total score based on the point value provided in Task.js
-calculateTotalScore: (userId) => {
-    return User.findById(userId)
+calculateTotalScore: (username) => {
+    return User.findById(username)
       .populate({
         path: 'checkedToDos',
         select: 'scoreValue',

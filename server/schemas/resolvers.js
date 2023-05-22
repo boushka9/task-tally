@@ -1,13 +1,15 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Task } = require("../models");
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
 
     Query: {
+      //query user
         users: async () => {
           return User.find();
         },
-    
+        //query one user
         user: async (parent, { profileId }) => {
           return User.findOne({ _id: userId });
         },
@@ -18,9 +20,18 @@ const resolvers = {
           }
           throw new AuthenticationError('You need to be logged in!');
         },
-      //getTotalScore:
+        //query tasks
+        tasks: async (parent, { username }) => {
+          const params = username ? { username } : {};
+          return Thought.find(params).sort({ createdAt: -1 });
+        },
+        //query one task
+        task: async (parent, { taskId }) => {
+          return Thought.findOne({ _id: taskId });
+        },
+      //TODO getTotalScore unless front end has it:
 
-      //getHighScore:
+      //TODO getHighScore id front end doesn't:
     },
 
 
@@ -29,10 +40,29 @@ const resolvers = {
 Mutation: {
 
 //login mutation
+login: async (parent, { username, password }) => {
+  const user = await User.findOne({ username});
 
-//signup mutation
+  if (!user) {
+    throw new AuthenticationError('No user found with this email address');
+  }
 
+  const correctPw = await user.isCorrectPassword(password);
+
+  if (!correctPw) {
+    throw new AuthenticationError('Incorrect credentials');
+  }
+
+  const token = signToken(user);
+
+  return { token, user };
+},
 // Add user
+addUser: async (parent, { username, password }) => {
+  const user = await User.create({ username, password });
+  const token = signToken(user);
+  return { token, user };
+},
 
 // Add task 
 addTask: async (parent, { scoreValue, title, body }) => {
@@ -42,7 +72,8 @@ addTask: async (parent, { scoreValue, title, body }) => {
 removeTask: async (parent, { taskId }) => {
   return Task.findOneAndDelete({ _id: taskId });
 },
-//get scores
+
+//TODO:get scores unless front end can do the thing
 
 
 //find user and populate todos
@@ -56,3 +87,5 @@ me: async (parent, args, context) => {
     throw new AuthenticationError('You need to be logged in!');
   }
 }};
+
+module.exports = resolvers
