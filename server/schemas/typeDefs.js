@@ -10,7 +10,7 @@ const typeDefs = gql`
 
     type Task {
         _id: ID
-        scoreValue: Int
+        scoreValue: Number
         title: String
         body: String
     }
@@ -26,16 +26,10 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser(username: String!, email: String!, password: String!): Auth
-        login(email: String!, password: String!): Auth
-        addTask(taskText: String!, taskAuthor: String!): Task
-        addComment(
-          taskId: ID!
-          commentText: String!
-          commentAuthor: String!
-        ): Task
+        addUser(username: String!, password: String!): Auth
+        login(username: String!, password: String!): Auth
+        addTask(scoreValue: Number!, title: String!, body: String! ): Task
         removeTask(taskId: ID!): Task
-        removeComment(taskId: ID!, commentId: ID!): Task
       }
 `;
 
