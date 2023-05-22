@@ -10,7 +10,7 @@ const typeDefs = gql`
 
     type Task {
         _id: ID
-        scoreValue: Int
+        scoreValue: Number
         title: String
         body: String
     }
@@ -24,6 +24,13 @@ const typeDefs = gql`
         users: [User]
         tasks: [Task]
     }
+
+    type Mutation {
+        addUser(username: String!, password: String!): Auth
+        login(username: String!, password: String!): Auth
+        addTask(scoreValue: Number!, title: String!, body: String! ): Task
+        removeTask(taskId: ID!): Task
+      }
 `;
 
 module.exports = typeDefs;
