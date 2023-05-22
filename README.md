@@ -2,7 +2,6 @@
     <img src="./client/src/assets/logo-1.png" alt="" width=300px>
 </p>
 
-
 # task-tally
 
 # Have you ever had problems with just getting normal and simple tasks done? 
