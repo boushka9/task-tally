@@ -24,6 +24,19 @@ const typeDefs = gql`
         users: [User]
         tasks: [Task]
     }
+
+    type Mutation {
+        addUser(username: String!, email: String!, password: String!): Auth
+        login(email: String!, password: String!): Auth
+        addTask(taskText: String!, taskAuthor: String!): Task
+        addComment(
+          taskId: ID!
+          commentText: String!
+          commentAuthor: String!
+        ): Task
+        removeTask(taskId: ID!): Task
+        removeComment(taskId: ID!, commentId: ID!): Task
+      }
 `;
 
 module.exports = typeDefs;
