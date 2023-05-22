@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import logo from '././assets/logo-1.png'
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar';
+
 
 import React,{ useState } from 'react';
 import './App.css';

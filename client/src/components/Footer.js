@@ -6,6 +6,7 @@ function Footer() {
   return (
     <footer className="App-footer">
     <p>Group 6 is the GOAT dont @ me</p>
+    
     </footer>
   );
 }
