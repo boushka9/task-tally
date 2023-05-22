@@ -27,7 +27,7 @@ const taskSchema = new Schema({
     //to-dos that are done. 
     checked: {
         type: Boolean,
-        required: true,
+        default: false,
     }
 })
 //initialize the task model
