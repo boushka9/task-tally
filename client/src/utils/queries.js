@@ -15,8 +15,8 @@ export const QUERY_TASKS = gql`
 `;
 
 export const QUERY_SINGLE_TASK = gql`
-  query getSingleTask($taskId: ID!) {
-    task(TaskId: $taskId) {
+  query getSingleTask($title: String!) {
+    task(title: $String) {
         _id
         createdAt
         scoreValue
@@ -29,10 +29,10 @@ export const QUERY_SINGLE_TASK = gql`
 `;
 
 export const QUERY_USER = gql`
-  {
-    user {
+query user($username: String!) {
+    user(username: $username) {
+      _id
       username
-      password
       toDos {
         _id
         createdAt
