@@ -15,6 +15,7 @@ const taskSchema = new Schema({
     title: {
         type: String,
         required: true,
+        unique: true,
     },
     body: {
         type: String,
@@ -27,7 +28,7 @@ const taskSchema = new Schema({
     //to-dos that are done. 
     checked: {
         type: Boolean,
-        required: true,
+        default: false,
     }
 })
 //initialize the task model

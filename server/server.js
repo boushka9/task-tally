@@ -27,15 +27,16 @@ app.use(express.json());
 
 //confirmation messages
 
-db.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+const startApolloServer = async () => {
+    await server.start();
+    server.applyMiddleware({ app });
+    
+    db.once('open', () => {
+      app.listen(PORT, () => {
+        console.log(`API server running on port ${PORT}!`);
+        console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+      })
     })
-  });
+    };
 
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-//     console.log(`GraphQL server ready at http://localhost:${PORT}${server.graphqlPath}`);
-//   });
-  
+startApolloServer();
