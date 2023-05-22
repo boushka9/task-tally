@@ -40,7 +40,7 @@ const handleChange = (event) => {
       {/* will call the function to check the credentials provided are correct and will be added to the databases of user */}
     <form onSubmit={onSubmit} className="signUp-form"> 
       <label forhtml="name">Enter Name</label>
-      {/* the onChange listener will allow reach to display in real time the changes that are occurring */}
+      the onChange listener will allow reach to display in real time the changes that are occurring
       <input value={name} onChange={(e) => setName(e.target.value)}/>
       <label forhtml="email">Email:</label>
       <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Example@gmail.com"/>

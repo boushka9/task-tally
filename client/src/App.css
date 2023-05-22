@@ -7,7 +7,16 @@
   --pale: #c7f9cc;
   --light: #fafdff;
 }
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Montserrat:ital,wght@0,400;1,700&display=swap');
+
+/* All text apart from headers = Montserrat   >  font-family: 'Montserrat', sans-serif;
+   All headers/titles = Amatic   >  font-family: 'Amatic SC', cursive;
+*/
+
 .App {
+  font-family: 'Montserrat', sans-serif;
   background-image: url('./assets/speckle.png');
   background-color: var(--light);
   text-align: center;
@@ -20,10 +29,16 @@
 }
 
 header {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+h1, h2 {
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo {
