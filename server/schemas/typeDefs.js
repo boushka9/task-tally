@@ -11,7 +11,6 @@ const typeDefs = gql`
     type Task {
         _id: ID
         scoreValue: Int
-        title: String
         body: String
     }
 
