@@ -29,6 +29,12 @@ const resolvers = {
         task: async (parent, { taskId }) => {
           return Thought.findOne({ _id: taskId });
         },
+        getCheckedToDos: async (parent, { username }) => {
+          const user = User.findOne({ username: "maverick" });
+          user.getCheckedToDos();
+          return user;
+        }
+        // User.populateChecked('maverick')
       //TODO getTotalScore unless front end has it:
 
       //TODO getHighScore id front end doesn't:
