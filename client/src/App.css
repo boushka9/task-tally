@@ -148,9 +148,13 @@ button:hover {
   margin: 10px 12% 10px 12%;
 }
 
+.todo-list {
+  width: 100%;
+}
+
 .to-do-li {
   display: grid;
-  grid-template-columns: 10% 60% 15%;
+  grid-template-columns: 10% 8% 50% 18%;
   grid-gap: 5px;
   background-color: var(--light);
   border-radius: 15px;
@@ -161,25 +165,35 @@ button:hover {
   box-shadow: 1.2px 2.4px 2.4px rgb(159, 156, 156);
 }
 
+.score {
+  grid-column: 1;
+  color: var(--jade);
+  font-size: 19px;
+  font-weight: 700;
+}
+
 .check-bx {
-  grid-column: 1; /* Position column 1 */
+  grid-column: 2; /* Position column 1 */
 }
 
 .un-checked {
-  grid-column: 2; /* Position column 2 */
+  grid-column: 3; /* Position column 2 */
   font-family: 'Amatic SC', cursive;
   font-weight: 700;
 }
 
 .del-li {
-  grid-column: 3; /* Position column 3 */
+  grid-column: 4; /* Position column 3 */
 }
 
 
 .to-do-page {
   flex: 1 0 auto;
   position: relative;
-  padding-bottom: 25%; /* Creates space for the form at the bottom */
+  padding-bottom: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Creates space for the form at the bottom */
 }
 
 .new-todo {
@@ -212,6 +226,10 @@ button:hover {
   .navBarList li {
     font-size: 20px;
   }
+
+  .todo-list {
+    width: 85%;
+  }
   
 }
 
@@ -231,5 +249,9 @@ button:hover {
 
   .login-sign {
     width: 30%;
+  }
+
+  .todo-list {
+    width: 69%;
   }
 }

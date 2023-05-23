@@ -5,6 +5,7 @@ import ToDoItem from '../components/ToDo';
 const TodoList = () => {
   const [todos, setTodos] = useState([]);// Initialize the state for todos array (empty to hold all todos)
   const [newTodo, setNewTodo] = useState(''); //Initialize new todo items
+  const [newScore, setNewScore] = useState(0);
 
   // query route to return all todos in user - set todo useState to 
 
@@ -13,11 +14,15 @@ const TodoList = () => {
     setNewTodo(e.target.value);
   };
 
+  const scoreValue = (e) => {
+    setNewScore(parseInt(e.target.value));
+  };
+
   // Add todo, can't be an empty string, add it to the existing array of todos w the check mark unchecked 
   // Each todo item is an object w the text and checked value (should be able to sort todos by checked: true/false)
   const addTodo = () => {
     if (newTodo.trim() !== '') {
-      setTodos([...todos, { text: newTodo, checked: false }]);
+      setTodos([...todos, { text: newTodo, checked: false, score: newScore }]);
       // pass back mutation to update the users todo array w entire new array (make sure to add new todo to entire array, not the filtered array for unchecked)
       setNewTodo('');
     }
@@ -59,14 +64,20 @@ const TodoList = () => {
           </ul>
         </div>
         <div className="new-todo">
-            <input
-              type="text"
-              value={newTodo}
-              onChange={inputChange}
-              placeholder="Add a new task to your tally!"
-            />
-            <button onClick={addTodo}>Add!</button>
-        </div>
+          <input
+            type="text"
+            value={newTodo}
+            onChange={inputChange}
+            placeholder="Add a new task to your tally!"
+          />
+          <input
+          type="number"
+          value={newScore}
+          onChange={scoreValue}
+          placeholder="Enter the score"
+        />
+        <button onClick={addTodo}>Add!</button>
+      </div>
     </div>
   );
 };
