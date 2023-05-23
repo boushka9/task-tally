@@ -43,34 +43,38 @@ userSchema.virtual("checkedToDos", {
     match: { checked: true }
 });
 
+userSchema.methods.populateChecked = function(username) {
+    return this.username
+    // return this.find({username}).populate("checkedToDos")
+    //  .exec();
+ }
 
 const User = model('User', userSchema);
 
-module.exports = { 
-    User, 
+module.exports = User; 
     //populates the completed toDos
-populateChecked: (username) => {
-   return User.findById(username).populate("checkedToDos")
-    .exec();
-},
+// populateChecked: (username) => {
+//    return User.findById(username).populate("checkedToDos")
+//     .exec();
+// },
     //calculates the total score based on the point value provided in Task.js
-calculateTotalScore: (username) => {
-    return User.findById(username)
-      .populate({
-        path: 'checkedToDos',
-        select: 'scoreValue',
-      })
-      .exec()
-      .then((user) => {
-        //the map function iterates over the scores from the array of checkedToDos
-        //the reduce function tallies the accumulated values
-        const checkedToDos = user.checkedToDos;
-        const totalScore = checkedToDos
-          .map((todo) => todo.scoreValue)
-          .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        return totalScore;
-      });
-  },
-};
+// calculateTotalScore: (username) => {
+//     return User.findById(username)
+//       .populate({
+//         path: 'checkedToDos',
+//         select: 'scoreValue',
+//       })
+//       .exec()
+//       .then((user) => {
+//         //the map function iterates over the scores from the array of checkedToDos
+//         //the reduce function tallies the accumulated values
+//         const checkedToDos = user.checkedToDos;
+//         const totalScore = checkedToDos
+//           .map((todo) => todo.scoreValue)
+//           .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+//         return totalScore;
+//       });
+//   },
+
 
 //now exported: User, populateChecked, and calculateTotalScore

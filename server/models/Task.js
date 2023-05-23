@@ -12,11 +12,6 @@ const taskSchema = new Schema({
         type: Number,
         required: true,
     },
-    title: {
-        type: String,
-        required: true,
-        unique: true,
-    },
     body: {
         type: String,
         required: true,
