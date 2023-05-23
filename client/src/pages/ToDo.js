@@ -42,28 +42,31 @@ const TodoList = () => {
   };
 
   return (
-    <div className="todo-list">
-      <h1>Todo List</h1>
-      <ul className="todo-items">
-        {uncheckedTodos.map((todo, item) => (
-            // Pass in To-Do item components
-          <ToDoItem
-            key={item}
-            todo={todo}
-            onCheck={() => handleCheck(item)}
-            onDelete={() => deleteTodo(item)}
-          />
-        ))}
-      </ul>
-      <div className="new-todo">
-        <input
-          type="text"
-          value={newTodo}
-          onChange={inputChange}
-          placeholder="Add a new task to your tally!"
-        />
-        <button onClick={addTodo}>Add!</button>
-      </div>
+    <div className='to-do-page'>
+        <h1>Todo List</h1>
+        <div className="todo-list">
+
+          <ul className="todo-items">
+            {uncheckedTodos.map((todo, item) => (
+                // Pass in To-Do item components
+              <ToDoItem
+                key={item}
+                todo={todo}
+                onCheck={() => handleCheck(item)}
+                onDelete={() => deleteTodo(item)}
+              />
+            ))}
+          </ul>
+        </div>
+        <div className="new-todo">
+            <input
+              type="text"
+              value={newTodo}
+              onChange={inputChange}
+              placeholder="Add a new task to your tally!"
+            />
+            <button onClick={addTodo}>Add!</button>
+        </div>
     </div>
   );
 };

@@ -5,7 +5,8 @@
   --jade: #57cc99;
   --bright: #80ed99;
   --pale: #c7f9cc;
-  --light: #fafdff;
+  --light: #fefeff;
+  --gray: #f4f6f8;
 }
 
 /* Import fonts */
@@ -15,10 +16,15 @@
    All headers/titles = Amatic   >  font-family: 'Amatic SC', cursive;
 */
 
+html,
+body {
+  height: 100%;
+}
+
 .App {
   font-family: 'Montserrat', sans-serif;
   background-image: url('./assets/speckle.png');
-  background-color: var(--light);
+  background-color: var(--gray);
   text-align: center;
   display: flex;
   flex: 1;
@@ -131,10 +137,61 @@ button:hover {
 }
 
 .App-footer {
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 100%; */
+  flex-shrink: 0;
 }
+
+.todo-items {
+  padding: 0;
+  margin: 10px 12% 10px 12%;
+}
+
+.to-do-li {
+  display: grid;
+  grid-template-columns: 10% 60% 15%;
+  grid-gap: 5px;
+  background-color: var(--light);
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: 15px 0;
+  box-shadow: 1.2px 2.4px 2.4px rgb(159, 156, 156);
+}
+
+.check-bx {
+  grid-column: 1; /* Position column 1 */
+}
+
+.un-checked {
+  grid-column: 2; /* Position column 2 */
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+}
+
+.del-li {
+  grid-column: 3; /* Position column 3 */
+}
+
+
+.to-do-page {
+  flex: 1 0 auto;
+  position: relative;
+  padding-bottom: 25%; /* Creates space for the form at the bottom */
+}
+
+.new-todo {
+  position: absolute;
+  bottom: 8%; /* Position the form 15% up from the bottom */
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  
+}
+
+
 
 @media screen and (min-width: 700px) {
 
