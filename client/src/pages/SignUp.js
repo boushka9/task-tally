@@ -36,7 +36,7 @@ const handleChange = (event) => {
 };
 // the html that will be returned for a sign up Page
   return (
-    <div className="form-container">
+    <div className="form-container login-sign">
       {/* will call the function to check the credentials provided are correct and will be added to the databases of user */}
     <form onSubmit={onSubmit} className="signUp-form"> 
       <label forhtml="name">Enter Name</label>
@@ -49,7 +49,9 @@ const handleChange = (event) => {
       <button className="sign-up">Sign Up</button>
     </form>
     {/* This will link to the login page when its clicked */}
-    <button className="link-btn" onClick={() => props.onFormSwitch('Login')}>Already have an account? Login In</button>
+    <a href="/">
+    <button className="link-btn" >Already have an account? Login In</button>
+    </a>
     </div>
     
 

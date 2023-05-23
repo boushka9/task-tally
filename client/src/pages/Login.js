@@ -32,7 +32,7 @@ export const Login = (props) => {
   // this will the the login form that will be called if they user has not been signed in
   // need to add link to data base of users
   return (
-    <div className="form-container">
+    <div className="form-container login-sign">
      <form onSubmit={onSubmit} className="login-form"> 
       <label htmlFor="email">Email:</label>
       <input name="email" onChange={handleChange} type="email" placeholder="Example@gmail.com" id="email"/>
@@ -46,7 +46,9 @@ export const Login = (props) => {
       <button>Login</button>
     </form>
     {/* This will change pages to sign up will have this changed to link with the api later */}
-    <button className="link-btn" onClick={() => props.onFormSwitch('SignUp')}> Don't have an account? Sign Up Here</button>
+    <a href="/signup">
+    <button className="link-btn"> Don't have an account? Sign Up Here</button>
+    </a>
     </div>
    
   )

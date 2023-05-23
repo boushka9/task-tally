@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className='navBar'>
       <ul className='navBarList'>
         <li>
-          <a href="/">To-Do</a>
+          <a href="/todos">To-Do</a>
         </li>
         <li>
           <a href="/to-done">To-Done</a>
@@ -17,7 +17,7 @@ const Navbar = () => {
           <a href="/scores">Scores</a>
         </li>
         <li>
-          <a href="/login">Logout</a>
+          <a href="/">Logout</a>
           {/* Logout ends session and takes user back to login */}
         </li>
       </ul>

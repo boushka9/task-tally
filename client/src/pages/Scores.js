@@ -19,3 +19,5 @@ export const UserScores = () => {
     </div>
   )
 }
+
+export default UserScores;
