@@ -71,8 +71,8 @@ addUser: async (parent, { username, password }) => {
 },
 
 // Add task 
-addTask: async (parent, { scoreValue, title, body }) => {
-  return Task.create({ scoreValue, title, body });
+addTask: async (parent, { scoreValue, body }) => {
+  return Task.create({ scoreValue, body });
 },
 // remove/delete task
 removeTask: async (parent, { taskId }) => {

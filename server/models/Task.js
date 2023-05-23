@@ -17,7 +17,7 @@ const taskSchema = new Schema({
         required: true,
     },
     username: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: 'User',
     },
     //to-dos that are done. 

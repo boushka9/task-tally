@@ -16,7 +16,7 @@ const userSchema = new Schema(
           },
         toDos: [{
             type: Schema.Types.ObjectId,
-            ref: 'toDos',
+            ref: "toDos",
         }],
         highScore: [{
             //array of checked score values for user
