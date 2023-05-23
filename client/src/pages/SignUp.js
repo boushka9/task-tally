@@ -1,27 +1,28 @@
 import React,{ useState } from "react";
-// import { useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-// Need to import the 'ADD_USER' mutation 
+import { ADD_USER } from "../utils/mutations";
+import { Link } from 'react-router-dom';
 
 export const SignUp = (props) => {
   // use State will allow change and save the previous data
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ username: '',email: '', password: '' });
   // Need the the 'ADD_USER' mutation to allow to add a new user
-  // const [addUser] = useMutation();
+ const [addUser, { error, data }] = useMutation(ADD_USER)
   // The function will retrieve the data provided in the form that will be sent to create a new User
   const onSubmit = async (event) => {
     event.preventDefault();
     // will be uncommented once I link to the dataBase
-    // const mutationResponse = await addUser({
-    //   variables: {
-    //     email: formState.email,
-    //     password: formState.password,
-    //     name: formState.name,
-    //   },
-    // });
-    // // After it creates a new user then it will allow the user to login with a token
-    // const token = mutationResponse.data.addUser.token;
-    // Auth.login(token);
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+     
+      });
+      const token = data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
 
@@ -38,20 +39,29 @@ const handleChange = (event) => {
   return (
     <div className="form-container login-sign">
       {/* will call the function to check the credentials provided are correct and will be added to the databases of user */}
-    <form onSubmit={onSubmit} className="signUp-form"> 
-      <label forhtml="name">Enter Name</label>
-      {/* the onChange listener will allow reach to display in real time the changes that are occurring
-      <input value={name} onChange={(e) => setName(e.target.value)}/>
+      { data ? (
+        <Link to='/todos' ></Link>
+      ): (
+        <form onSubmit={onSubmit} className="signUp-form"> 
+      <label forhtml="username">Enter User Name</label>
+      {/* the onChange listener will allow reach to display in real time the changes that are occurring */}
+      <input name="username" placeholder="TheRealShrimp" value={formState.username} onChange={handleChange}/>
       <label forhtml="email">Email:</label>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Example@gmail.com"/>
+      <input value={formState.email} onChange={handleChange} name="email" type="email" placeholder="Example@gmail.com"/>
       <label forhtml="password">Password:</label>
-      <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder=""/> */}
+      <input value={formState.password} onChange={handleChange} name="password" type="password" placeholder=""/>
       <button className="sign-up">Sign Up</button>
     </form>
-    {/* This will link to the login page when its clicked */}
-    <a href="/">
-    <button className="link-btn" >Already have an account? Login In</button>
-    </a>
+      )}
+      {error && (
+             <div>
+             <p className="error-text">{error.message}</p>
+           </div>
+            )}
+     <a href="/">
+       <button className="link-btn" >Already have an account? Login In</button>
+      </a>       
+   
     </div>
     
 

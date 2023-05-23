@@ -1,25 +1,27 @@
 import React,{ useState } from "react";
-// import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-// import { LOGIN } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import Auth from "../utils/auth";
+import { LOGIN } from '../utils/mutations';
+import { Link } from 'react-router-dom';
 // Need to import Auth and apollo react to be able to check credentials 
 export const Login = (props) => {
 
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ username: '', password: '' });
   // useMutation(LOGIN )
-  // const [login, { error }] = useMutation();
+  const [login, { error, data }] = useMutation( LOGIN );
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   const mutationResponse = await login({
-    //     variables: { email: formState.email, password: formState.password },
-    //   });
-    //   const token = mutationResponse.data.login.token;
-    //   Auth.login(token);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+        // { email: formState.email, password: formState.password },
+      });
+      const token = data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   const handleChange = (event) => {
@@ -33,18 +35,25 @@ export const Login = (props) => {
   // need to add link to data base of users
   return (
     <div className="form-container login-sign">
-     <form onSubmit={onSubmit} className="login-form"> 
-      <label htmlFor="email">Email:</label>
-      <input name="email" onChange={handleChange} type="email" placeholder="Example@gmail.com" id="email"/>
+      { data ? (
+        <Link to='/todos' ></Link>
+      ):
+      (
+        <form onSubmit={onSubmit} className="login-form"> 
+      <label htmlFor="username">Username:</label>
+      <input name="username" value={formState.username} onChange={handleChange} type="username" placeholder="TheShrimp" />
       <label htmlFor="password">Password:</label>
-      <input  onChange={handleChange} type="password" placeholder="" name="password" id="password"/>
-      {/* {error ? (
+      <input  onChange={handleChange} type="password" placeholder="" name="password" value={formState.password}/>
+      {error ? (
           <div>
             <p className="error-text">Incorrect Email or Password, try again?</p>
           </div>
-        ) : null} */}
+        ) : null}
       <button>Login</button>
     </form>
+      )}
+
+     
     {/* This will change pages to sign up will have this changed to link with the api later */}
     <a href="/signup">
     <button className="link-btn"> Don't have an account? Sign Up Here</button>
