@@ -23,11 +23,11 @@ const resolvers = {
         //query tasks
         tasks: async (parent, { username }) => {
           const params = username ? { username } : {};
-          return Thought.find(params).sort({ createdAt: -1 });
+          return Task.find(params).sort({ createdAt: -1 });
         },
         //query one task
         task: async (parent, { taskId }) => {
-          return Thought.findOne({ _id: taskId });
+          return Task.findOne({ _id: taskId });
         },
         getCheckedToDos: async (parent, { username }) => {
           const user = User.findOne({ username: "maverick" });
