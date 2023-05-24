@@ -29,11 +29,17 @@ const resolvers = {
         task: async (parent, { taskId }) => {
           return Task.findOne({ _id: taskId });
         },
-        getCheckedToDos: async (parent, { username }) => {
-          const user = User.findOne({ username: "maverick" });
-          user.getCheckedToDos();
-          return user;
-        }
+
+        getCheckedToDos: async (parent, args) => {
+          const params = {checked: true}
+          return Task.find(params);
+        },
+
+        // getCheckedToDos: async (parent, { username }) => {
+        //   const user = User.findOne({ username: "pedroPascal" });
+        //   user.getCheckedToDos();
+        //   return user;
+        // }
         // User.populateChecked('maverick')
       //TODO getTotalScore unless front end has it:
 
@@ -85,7 +91,7 @@ removeTask: async (parent, { taskId }) => {
 //find user and populate todos
 me: async (parent, args, context) => {
     if (context.user) {
-      const user =  User.findOne({ _id: context.user._id })
+      const user =  User.findOne({ username })
       .select("-__v")
       .populate("toDos")
       return user  
@@ -95,3 +101,5 @@ me: async (parent, args, context) => {
 }};
 
 module.exports = resolvers
+
+//_id: context.user._id

@@ -1,19 +1,15 @@
-
-/* task data and whatnot */
-
-{
-    "task": [
+[
       {
         "scoreValue": 1,
         "body": "This is the first sample task.",
         "username": "jamieTart",
-        "checked": false
+        "checked": true
       },
       {
         "scoreValue": 2,
         "body": "This is the second sample task.",
         "username": "pedroPascal",
-        "checked": false
+        "checked": true
       },
       {
         "scoreValue": 3,
@@ -70,6 +66,5 @@
         "checked": false
       }
     ]
-  }
   
 
