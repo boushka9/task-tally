@@ -24,17 +24,18 @@ export const ADD_USER = gql`
 
 // THIS MIGHT BE AN UPDATE OP INSTEAD OF A CREATE
 export const ADD_TASK = gql`
-  mutation addTask($body: String!, $scoreValue: Number!) {
-    addTask($body: String!, $scoreValue: Number!) {
-        _id
-        createdAt
-        scoreValue
-        body
-        userId
-        checked
+  mutation addTask($body: String!, $scoreValue: number!) {
+    addTask(body: $body, scoreValue: $scoreValue) {
+      _id
+      createdAt
+      scoreValue
+      body
+      userId
+      checked
     }
   }
 `;
+
 
 //Remove task by ID
 export const REMOVE_TASK= gql`
