@@ -14,7 +14,7 @@ const ToDoItem = ({ todo, onCheck, onDelete }) => {
           />
         </div>
 
-        <h2 className='to-do-text'>{todo.text}</h2>
+        <h2 className='to-do-text'>{todo.body}</h2>
 
         <div className='del-li'> 
           <button onClick={onDelete}>Delete</button>
