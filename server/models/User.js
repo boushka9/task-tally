@@ -44,11 +44,26 @@ userSchema.virtual("checkedToDos", {
 });
 
 userSchema.methods.populateChecked = function(username) {
-    return this.username
-    // return this.find({username}).populate("checkedToDos")
-    //  .exec();
+    return this.username.populate("checkedToDos")
+     .exec();
  }
 
+ userSchema.methods.calculateTotalScore = function(username) {
+    return this.username.populate({
+                path: 'checkedToDos',
+                select: 'scoreValue',
+              })
+              .exec()
+              .then((user) => {
+                //the map function iterates over the scores from the array of checkedToDos
+                //the reduce function tallies the accumulated values
+                const checkedToDos = user.checkedToDos;
+                const totalScore = checkedToDos
+                  .map((todo) => todo.scoreValue)
+                  .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+                return totalScore;
+              });
+ }
 const User = model('User', userSchema);
 
 module.exports = User; 
