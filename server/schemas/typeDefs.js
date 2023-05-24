@@ -12,6 +12,7 @@ const typeDefs = gql`
         _id: ID
         scoreValue: Int
         body: String
+        checked: Boolean
     }
 
     type Auth {
@@ -25,13 +26,13 @@ const typeDefs = gql`
         users: [User]
         task: Task
         tasks: [Task]
-        getCheckedToDos: User
+        getCheckedToDos: [Task]
     }
 
     type Mutation {
         addUser(username: String!, password: String!): Auth
         login(username: String!, password: String!): Auth
-        addTask(scoreValue: Int!, title: String!, body: String! ): Task
+        addTask(scoreValue: Int!, body: String!, checked: Boolean ): Task
         removeTask(taskId: ID!): Task
         me:User
       }
