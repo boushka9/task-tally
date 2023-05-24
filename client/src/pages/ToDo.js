@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 // import Auth from "../utils/auth";
-import { ADD_TASK, REMOVE_TASK } from '../utils/mutations';
+import { REMOVE_TASK } from '../utils/mutations';
 // Pass in component
 import ToDoItem from '../components/ToDo';
 import NewTodoForm from '../components/NewToDo';
@@ -9,12 +9,17 @@ import NewTodoForm from '../components/NewToDo';
 const TodoList = () => {
   const [todos, setTodos] = useState([]);// Initialize the state for todos array (empty to hold all todos)
 
-  const [removeTask, { error: removeTaskError }] = useMutation(REMOVE_TASK);
+  const [removeTask, { data, loading, error }] = useMutation(REMOVE_TASK);
+
+  if (loading) return 'Deleting Selected Task...';
+  if (error) return `Error Deleting Selected Task! ${error.message}`;
 
   // when an item is checked the todos array will be updated to reflect the change from checked: false to true
   const handleCheck = (item) => {
     const updatedTodos = [...todos];
+
     updatedTodos[item].checked = !updatedTodos[item].checked;
+
     setTodos(updatedTodos);
   };
 
@@ -26,22 +31,16 @@ const TodoList = () => {
     const updatedTodos = [...todos];
     const deletedTask = updatedTodos.splice(item, 1)[0];
 
-    try {
-      // Execute the removeTask mutation and pass the deleted task's ID as variables
-      removeTask({
-        variables: {
-          id: deletedTask.id, // IS THIS HOW YOU REFERENCE OUR DBs TASK ID?? 
-        },
-      });
-    // Pass  updated and overwrite users previous todo data
+    // Execute the removeTask mutation and pass the deleted task's ID as variables
+    try { 
+      // IS THIS HOW YOU REFERENCE OUR DBs TASK ID?? 
+      removeTask({ variables: {id: deletedTask.id } });
+
+      // Pass in updated and overwrite users previous todos so the deleted one is no longer on the page
       setTodos(updatedTodos);
     } catch (error) {
       // Handle the error if needed
       console.error(error);
-    }
-    if (removeTaskError) {
-      // Handle removeTaskError, e.g., display an error message
-      console.error('Error removing task:', removeTaskError);
     }
   };
 
@@ -56,8 +55,8 @@ const TodoList = () => {
               <ToDoItem
                 key={item}
                 todo={todo}
-                onCheck={() => handleCheck(item)}
-                onDelete={() => deleteTodo(item)}
+                onCheck={() => handleCheck(item)} //When item is checked off as completed
+                onDelete={() => deleteTodo(item)} //When item is deleted
               />
             ))}
           </ul>
