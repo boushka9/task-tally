@@ -1,7 +1,7 @@
 /* task data and whatnot */
 
 {
-    "tasks": [
+    "task": [
       {
         "scoreValue": 1,
         "body": "This is the first sample task.",
