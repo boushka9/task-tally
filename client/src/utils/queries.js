@@ -6,7 +6,6 @@ export const QUERY_TASKS = gql`
         _id
         createdAt
         scoreValue
-        title
         body
         userId
         checked
@@ -14,19 +13,18 @@ export const QUERY_TASKS = gql`
   }
 `;
 
-export const QUERY_SINGLE_TASK = gql`
-  query getSingleTask($title: String!) {
-    task(title: $String) {
-        _id
-        createdAt
-        scoreValue
-        title
-        body
-        userId
-        checked
-    }
-  }
-`;
+// export const QUERY_SINGLE_TASK = gql`
+//   query getSingleTask($title: String!) {
+//     task(title: $String) {
+//         _id
+//         createdAt
+//         scoreValue
+//         body
+//         userId
+//         checked
+//     }
+//   }
+// `;
 
 export const QUERY_USER = gql`
 query user($username: String!) {
@@ -37,7 +35,6 @@ query user($username: String!) {
         _id
         createdAt
         scoreValue
-        title
         body
         userId
         checked

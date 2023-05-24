@@ -12,17 +12,12 @@ const taskSchema = new Schema({
         type: Number,
         required: true,
     },
-    title: {
-        type: String,
-        required: true,
-        unique: true,
-    },
     body: {
         type: String,
         required: true,
     },
     username: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: 'User',
     },
     //to-dos that are done. 
