@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 
-// Aligns w server side 'tasks: [Task]' query
 export const QUERY_TASKS = gql`
   query getTasks {
     tasks {
@@ -14,7 +13,19 @@ export const QUERY_TASKS = gql`
   }
 `;
 
-// Aligns w server side 'user: User' query
+// export const QUERY_SINGLE_TASK = gql`
+//   query getSingleTask($title: String!) {
+//     task(title: $String) {
+//         _id
+//         createdAt
+//         scoreValue
+//         body
+//         userId
+//         checked
+//     }
+//   }
+// `;
+
 export const QUERY_USER = gql`
 query user($username: String!) {
     user(username: $username) {

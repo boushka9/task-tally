@@ -4,14 +4,55 @@ import { useMutation } from '@apollo/client';
 import { ADD_TASK, REMOVE_TASK } from '../utils/mutations';
 // Pass in component
 import ToDoItem from '../components/ToDo';
-import NewTodoForm from '../components/NewToDo';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);// Initialize the state for todos array (empty to hold all todos)
+  const [newTodo, setNewTodo] = useState(''); //Initialize new todo items
+  const [newScore, setNewScore] = useState(0);
 
+  //Invoke 'useMutation' hook for returned promise data - can't call two errors in the same scope.. renamed them
+  const [addTask, { error: addTaskError }] = useMutation(ADD_TASK);
   const [removeTask, { error: removeTaskError }] = useMutation(REMOVE_TASK);
 
-  // when an item is checked the todos array will be updated to reflect the change from checked: false to true
+    // Get value of entered new todo use it for setNewTodo
+  const inputChange = (e) => {
+    setNewTodo(e.target.value);
+  };
+
+  const scoreValue = (e) => {
+    setNewScore(parseInt(e.target.value));
+  };
+
+  // Add todo, can't be an empty string, add it to the existing array of todos w the check mark unchecked 
+  // Each todo item is an object w the body and checked value (should be able to sort todos by checked: true/false)
+  const addTodo = async () => {
+    if (newTodo.trim() !== '') {
+      const newTask = { body: newTodo, checked: false, score: newScore };
+
+      try {
+        // Execute the addTask mutation and pass the newTask as variables
+        await addTask({
+          variables: {
+            data: {
+              task: newTask,
+            },
+          },
+        });
+        // Add the new todo item to the end of the existing array of todos
+        setTodos([...todos, newTask]);
+        setNewTodo('');
+      } catch (error) {
+        // Handle the error if needed
+        console.error(error);
+        if (addTaskError) {
+          // Handle addTaskError specifically 
+          console.error('Error adding task:', addTaskError);
+        }
+      }
+    }
+  };
+
+   // when an item is checked the todos array will be updated to reflect the change from checked: false to true
   const handleCheck = (item) => {
     const updatedTodos = [...todos];
     updatedTodos[item].checked = !updatedTodos[item].checked;
@@ -20,6 +61,7 @@ const TodoList = () => {
 
   // Filter array to exclude items that are checked
   const uncheckedTodos = todos.filter((todo) => !todo.checked);
+
 
   // Remove the selected item in array w splice method and then setTodos state with the updated array
   const deleteTodo = (item) => {
@@ -49,10 +91,10 @@ const TodoList = () => {
     <div className='to-do-page'>
         <h1>Todo List</h1>
         <div className="todo-list">
-          {/* Map over only the to-do items that have not been completed (unchecked) */}
+
           <ul className="todo-items">
             {uncheckedTodos.map((todo, item) => (
-                // Pass in To-Do item components and logic to handle check-marked/completed tasks and deleted to-dos
+                // Pass in To-Do item components
               <ToDoItem
                 key={item}
                 todo={todo}
@@ -62,7 +104,21 @@ const TodoList = () => {
             ))}
           </ul>
         </div>
-        <NewTodoForm />
+        <div className="new-todo">
+          <input
+            type="body"
+            value={newTodo}
+            onChange={inputChange}
+            placeholder="Add a new task to your tally!"
+          />
+          <input
+          type="number"
+          value={newScore}
+          onChange={scoreValue}
+          placeholder="Enter the score"
+        />
+        <button onClick={addTodo}>Add!</button>
+      </div>
     </div>
   );
 };
