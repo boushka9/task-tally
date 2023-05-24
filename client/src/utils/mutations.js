@@ -30,7 +30,6 @@ export const ADD_TASK = gql`
         _id
         createdAt
         scoreValue
-        title
         body
         userId
         checked
@@ -45,7 +44,6 @@ export const REMOVE_TASK= gql`
         _id
         createdAt
         scoreValue
-        title
         body
         userId
         checked

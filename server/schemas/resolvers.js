@@ -23,12 +23,24 @@ const resolvers = {
         //query tasks
         tasks: async (parent, { username }) => {
           const params = username ? { username } : {};
-          return Thought.find(params).sort({ createdAt: -1 });
+          return Task.find(params).sort({ createdAt: -1 });
         },
         //query one task
         task: async (parent, { taskId }) => {
-          return Thought.findOne({ _id: taskId });
+          return Task.findOne({ _id: taskId });
         },
+
+        getCheckedToDos: async (parent, args) => {
+          const params = {checked: true}
+          return Task.find(params);
+        },
+
+        // getCheckedToDos: async (parent, { username }) => {
+        //   const user = User.findOne({ username: "pedroPascal" });
+        //   user.getCheckedToDos();
+        //   return user;
+        // }
+        // User.populateChecked('maverick')
       //TODO getTotalScore unless front end has it:
 
       //TODO getHighScore id front end doesn't:
@@ -65,8 +77,8 @@ addUser: async (parent, { username, password }) => {
 },
 
 // Add task 
-addTask: async (parent, { scoreValue, title, body }) => {
-  return Task.create({ scoreValue, title, body });
+addTask: async (parent, { scoreValue, body }) => {
+  return Task.create({ scoreValue, body });
 },
 // remove/delete task
 removeTask: async (parent, { taskId }) => {
@@ -79,7 +91,7 @@ removeTask: async (parent, { taskId }) => {
 //find user and populate todos
 me: async (parent, args, context) => {
     if (context.user) {
-      const user =  User.findOne({ _id: context.user._id })
+      const user =  User.findOne({ username })
       .select("-__v")
       .populate("toDos")
       return user  
@@ -89,3 +101,5 @@ me: async (parent, args, context) => {
 }};
 
 module.exports = resolvers
+
+//_id: context.user._id

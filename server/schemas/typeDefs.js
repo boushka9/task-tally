@@ -10,9 +10,9 @@ const typeDefs = gql`
 
     type Task {
         _id: ID
-        scoreValue: Number
-        title: String
+        scoreValue: Int
         body: String
+        checked: Boolean
     }
 
     type Auth {
@@ -21,15 +21,20 @@ const typeDefs = gql`
     }
 
     type Query {
+        me: User
+        user: User
         users: [User]
+        task: Task
         tasks: [Task]
+        getCheckedToDos: [Task]
     }
 
     type Mutation {
         addUser(username: String!, password: String!): Auth
         login(username: String!, password: String!): Auth
-        addTask(scoreValue: Number!, title: String!, body: String! ): Task
+        addTask(scoreValue: Int!, body: String!, checked: Boolean ): Task
         removeTask(taskId: ID!): Task
+        me:User
       }
 `;
 
