@@ -23,12 +23,18 @@ const resolvers = {
         //query tasks
         tasks: async (parent, { username }) => {
           const params = username ? { username } : {};
-          return Thought.find(params).sort({ createdAt: -1 });
+          return Task.find(params).sort({ createdAt: -1 });
         },
         //query one task
         task: async (parent, { taskId }) => {
-          return Thought.findOne({ _id: taskId });
+          return Task.findOne({ _id: taskId });
         },
+        getCheckedToDos: async (parent, { username }) => {
+          const user = User.findOne({ username: "maverick" });
+          user.getCheckedToDos();
+          return user;
+        }
+        // User.populateChecked('maverick')
       //TODO getTotalScore unless front end has it:
 
       //TODO getHighScore id front end doesn't:
@@ -65,8 +71,8 @@ addUser: async (parent, { username, password }) => {
 },
 
 // Add task 
-addTask: async (parent, { scoreValue, title, body }) => {
-  return Task.create({ scoreValue, title, body });
+addTask: async (parent, { scoreValue, body }) => {
+  return Task.create({ scoreValue, body });
 },
 // remove/delete task
 removeTask: async (parent, { taskId }) => {

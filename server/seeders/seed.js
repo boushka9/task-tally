@@ -11,12 +11,12 @@ db.once('open', async () => {
     await User.create(userSeeds);
 
     for (let i = 0; i < taskSeeds.length; i++) {
-      const { _id, taskAuthor } = await Task.create(taskSeeds[i]);
+      const { _id, username } = await Task.create(taskSeeds[i]);
       const user = await User.findOneAndUpdate(
-        { username: taskAuthor },
+        { username },
         {
           $addToSet: {
-            tasks: _id,
+            toDos: _id,
           },
         }
       );
