@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_TASKS } from '../utils/queries';
 import ToDoneItem from '../components/ToDoneItem';
+import Auth from '../utils/auth'
 
 const ToDoneList = () => {
   const { data: taskData, loading: loadingRender, error: renderError } = useQuery(QUERY_TASKS);
@@ -22,6 +23,7 @@ const ToDoneList = () => {
   return (
     <div className='to-do-page'>
       <h1>To-Done List</h1>
+      {Auth.loggedIn() ? (
       <div className="todo-list">
         <ul className="todo-items">
           {todos.map((todo, item) => (
@@ -32,6 +34,9 @@ const ToDoneList = () => {
           ))}
         </ul>
       </div>
+      ) : (
+        <h1>Log in to view your tally of completed tasks!</h1>
+      )}
     </div>
   );
 };

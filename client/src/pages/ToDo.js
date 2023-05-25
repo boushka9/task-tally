@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-// import Auth from "../utils/auth";
+import Auth from '../utils/auth'
 // Pass in component
 import ToDoItem from '../components/ToDoItem';
 import NewTodoForm from '../components/NewToDo';
@@ -35,21 +35,28 @@ const TodoList = () => {
   return (
     <div className='to-do-page'>
       <h1>To-do List</h1>
-      <div className="todo-list">
-        <ul className="todo-items">
-          {todos.map((todo) => (
-            <ToDoItem
-              key={todo.id}
-              todo={todo}
-              onCheck={handleCheck}
-              checked={checkedTodoIds.includes(todo.id)}
-            />
-          ))}
-        </ul>
-      </div>
-      <NewTodoForm />
+      {Auth.loggedIn() ? (
+        <div>
+          <div className="todo-list">
+            <ul className="todo-items">
+              {todos.map((todo) => (
+                <ToDoItem
+                  key={todo.id}
+                  todo={todo}
+                  onCheck={handleCheck}
+                  checked={checkedTodoIds.includes(todo.id)}
+                />
+              ))}
+            </ul>
+          </div>
+          <NewTodoForm />
+        </div>
+      ) : (
+        <h1>Log in to view your tally!</h1>
+      )}
     </div>
   );
+  
 };
 
 
