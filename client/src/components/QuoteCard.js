@@ -1,27 +1,44 @@
-const API_KEY = 'h037C02e7gcSnjrPpLPt7g==CaOU09qBsjKkkMyn'
+const API_KEY = "h037C02e7gcSnjrPpLPt7g==CaOU09qBsjKkkMyn";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-// create Http request for quote
-const request = require('request');
-var category = 'success';
-request.get({
-  url: 'https://api.api-ninjas.com/v1/quotes?category=' + category,
-  headers: {
-    'X-Api-Key': 'h037C02e7gcSnjrPpLPt7g==CaOU09qBsjKkkMyn'
-  },
-}, function(error, response, body) {
-  if(error) return console.error('Request failed:', error);
-  else if(response.statusCode != 200) return console.error('Error:', response.statusCode, body.toString('utf8'));
-  else console.log(body)
-});
-// Build react page load
-function QuoteCard() {
+const QuoteCard = () => {
+  // State variable to hold the fetched quote
+  const [quote, setQuote] = useState('');
+
+  useEffect(() => {
+    // Function to fetch the quote from the API
+    const fetchQuote = async () => {
+      try {
+        const category = 'success';
+        // Make the API request
+        const response = await fetch(`https://api.api-ninjas.com/v1/quotes?category=${category}`, {
+          headers: {
+            'X-Api-Key': API_KEY
+          }
+        });
+        // Check for errors in the API response
+        if (!response.ok) {
+          throw new Error('Error: ' + response.status);
+        }
+        // Extract the JSON data from the response
+        const data = await response.json();
+        // Set the fetched quote as the state value
+        setQuote(data[0].quote);
+      } catch (error) {
+        console.error('Request failed:', error);
+      }
+    };
+
+    // Call the fetchQuote function
+    fetchQuote();
+  }, []);
+
   return (
-    <body className="App-quote">
-    <p></p>
-    </body>
+    <div className="quote-card">
+      <p>{quote}</p>
+    </div>
   );
-}
+};
 
 export default QuoteCard;
