@@ -26,7 +26,9 @@ const taskSchema = new Schema({
         default: false,
     }
 })
+
 //initialize the task model
+
 const Task = model("toDos", taskSchema)
 
 module.exports = Task;
