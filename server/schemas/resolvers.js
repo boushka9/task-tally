@@ -58,9 +58,9 @@ login: async (parent, { username, password }) => {
   if (!user) {
     throw new AuthenticationError('No user found with this email address');
   }
-
+// debugger
   const correctPw = await user.isCorrectPassword(password);
-
+debugger
   if (!correctPw) {
     throw new AuthenticationError('Incorrect credentials');
   }
