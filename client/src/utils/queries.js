@@ -4,6 +4,7 @@ import { gql } from '@apollo/client';
 export const QUERY_TASKS = gql`
   query Tasks {
     tasks {
+        _id
         body
         scoreValue
         checked

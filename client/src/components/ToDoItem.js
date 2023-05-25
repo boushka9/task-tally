@@ -2,6 +2,12 @@ import React from 'react';
 
 // Receives the 'todo' object, & onCheck/onDelete functions as props 
 const ToDoItem = ({ todo, onCheck, onDelete }) => {
+
+  const handleCheck = () => {
+    // Call onCheck function with the ID of the checked todo
+    onCheck(todo.id)
+  }
+
   return (
     <div className={todo.checked ? 'checked' : 'un-checked'}> 
       <li className='to-do-li'>
@@ -10,7 +16,7 @@ const ToDoItem = ({ todo, onCheck, onDelete }) => {
           <input 
             type="checkbox"
             checked={todo.checked}
-            onChange={onCheck}
+            onChange={handleCheck}
           />
         </div>
 

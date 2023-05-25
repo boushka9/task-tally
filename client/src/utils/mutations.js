@@ -35,6 +35,18 @@ export const ADD_TASK = gql`
   }
 `;
 
+// Update the task from checked:false to checked: true on click
+export const UPDATE_TASK = gql`
+  mutation UpdateTask($id: ID!, $checked: Boolean!) {
+    updateTask(id: $id, checked: $checked) {
+      id
+      body
+      scoreValue
+      checked
+    }
+  }
+`;
+
 
 //Remove task by ID
 export const REMOVE_TASK= gql`

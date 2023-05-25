@@ -85,6 +85,10 @@ removeTask: async (parent, { taskId }) => {
   return Task.findOneAndDelete({ _id: taskId });
 },
 
+updateTask: async (parent, { id, checked }) => {
+  return Task.findByIdAndUpdate(id, { checked }, { new: true })
+},
+
 //TODO:get scores unless front end can do the thing
 
 
