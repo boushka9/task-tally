@@ -2,13 +2,10 @@ import { gql } from '@apollo/client';
 
 // Aligns w server side 'tasks: [Task]' query
 export const QUERY_TASKS = gql`
-  query getTasks {
+  query Tasks {
     tasks {
-        _id
-        createdAt
-        scoreValue
         body
-        userId
+        scoreValue
         checked
     }
   }
@@ -22,7 +19,6 @@ query user($username: String!) {
       username
       toDos {
         _id
-        createdAt
         scoreValue
         body
         userId

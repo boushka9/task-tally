@@ -12,8 +12,8 @@
         "checked": true
       },
       {
-        "scoreValue": 3,
-        "body": "This is the third sample task.",
+        "scoreValue": -1000,
+        "body": "Text my ex.",
         "username": "elMando",
         "checked": false
       },
