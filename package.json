@@ -2,10 +2,13 @@
   "name": "task-tally",
   "version": "1.0.0",
   "description": "# Have you ever had problems with just getting normal task done?  Well here we will help you make your list of task and put them on a point system.",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed"
   },
   "repository": {
     "type": "git",

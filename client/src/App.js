@@ -1,5 +1,5 @@
 
-//import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import logo from '././assets/logo-1.png';
 import Login from './pages/Login';
 import Scores from './pages/Scores';
