@@ -63,7 +63,17 @@ userSchema.methods.populateChecked = function(username) {
                   .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
                 return totalScore;
               });
- }
+
+   
+              
+ } 
+ userSchema.methods.isCorrectPassword = async function (password) {
+            
+                // return bcrypt.compare(password, this.password);
+                return password === this.password;
+              };
+
+
 const User = model('User', userSchema);
 
 module.exports = User; 
