@@ -35,7 +35,7 @@ const ToDoneList = () => {
         </ul>
       </div>
       ) : (
-        <h1>Log in to view your tally of completed tasks!</h1>
+        <h1><a className="auth-login" href="/">Log in</a> to view your tally of completed tasks!</h1>
       )}
     </div>
   );

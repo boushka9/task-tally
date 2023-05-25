@@ -33,10 +33,10 @@ const TodoList = () => {
   if (loadingRender) return 'Loading Tasks...';
   if (renderError) return `Error Rendering Tasks! ${renderError.message}`;
   return (
-    <div className='to-do-page'>
+    <div>
       <h1>To-do List</h1>
       {Auth.loggedIn() ? (
-        <div>
+        <div className='to-do-page'>
           <div className="todo-list">
             <ul className="todo-items">
               {todos.map((todo) => (
@@ -52,7 +52,7 @@ const TodoList = () => {
           <NewTodoForm />
         </div>
       ) : (
-        <h1>Log in to view your tally!</h1>
+        <h1><a className="auth-login" href="/">Log in</a> to view your tally!</h1>
       )}
     </div>
   );
