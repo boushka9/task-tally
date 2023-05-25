@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 // import Auth from "../utils/auth";
 // Pass in component
 import ToDoItem from '../components/ToDoItem';

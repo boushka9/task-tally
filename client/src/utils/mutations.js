@@ -39,7 +39,7 @@ export const ADD_TASK = gql`
 export const UPDATE_TASK = gql`
   mutation UpdateTask($id: ID!, $checked: Boolean!) {
     updateTask(id: $id, checked: $checked) {
-      id
+      _id
       body
       scoreValue
       checked
