@@ -2,9 +2,13 @@
   "name": "task-tally",
   "version": "1.0.0",
   "description": "# Have you ever had problems with just getting normal task done?  Well here we will help you make your list of task and put them on a point system.",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed"
   },
   "repository": {
     "type": "git",
@@ -12,6 +16,9 @@
   },
   "author": "Group 6",
   "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
   "bugs": {
     "url": "https://github.com/boushka9/task-tally/issues"
   },
