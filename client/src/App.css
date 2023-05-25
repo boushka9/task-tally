@@ -202,6 +202,12 @@ button:hover {
   align-items: center; /* Creates space for the form at the bottom */
 }
 
+/* WHEN AN ITEM IS CHECKED ITS ELEMENT IS REMOVED FROM THE PAGE
+DISPLAY NONE DOESN'T MAINTAIN THE ELEMENTS SPACE LIKE 'hidden' DOES */
+.checked {
+  display: none;
+}
+
 .new-todo {
   bottom: 8%; 
   /* left: 0; */
