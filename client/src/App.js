@@ -6,6 +6,7 @@ import Scores from './pages/Scores';
 import SignUp from './pages/SignUp';
 import NavBar from './components/NavBar';
 import TodoList from './pages/ToDo';
+import ToDoneList from './pages/ToDone';
 import Footer from './components/Footer';
 import { setContext } from '@apollo/client/link/context';
 import React,{ useState } from 'react';
@@ -73,6 +74,10 @@ function App() {
                 path="/todos" 
                 element={<TodoList />} 
               />
+              <Route
+                path="/to-done"
+                element={<ToDoneList />}
+              />  
               <Route
                 path="/scores" 
                 element={<Scores />} 

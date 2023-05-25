@@ -1,5 +1,4 @@
-// ON LARGE SCREENS 
-
+import Auth from '../utils/auth'
 import React from 'react';
 // import { Link } from 'react-router-dom';
 
@@ -17,7 +16,7 @@ const Navbar = () => {
           <a href="/scores">Scores</a>
         </li>
         <li>
-          <a href="/">Logout</a>
+          <a href="/" onClick={() => Auth.logout()}>Logout</a>
           {/* Logout ends session and takes user back to login */}
         </li>
       </ul>

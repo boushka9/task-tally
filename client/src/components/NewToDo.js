@@ -1,16 +1,17 @@
 import React, { useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_TASK } from '../utils/mutations';
+import { QUERY_TASKS } from '../utils/queries';
 
 function AddTodo() {
     // Body and score useRef hook to access values of input els (assigned null bc they'll be re-assigned dif DOM els when the component renders)
   const bodyRef = useRef(null);
   const scoreRef = useRef(null);
-  // Default value of new to-do items check
-  const checked = false;
 
   // useMutation hook to connect to DB and add new To-Do item
-  const [addTodo, { data, loading, error }] = useMutation(ADD_TASK);
+  const [addTodo, { data, loading, error }] = useMutation(ADD_TASK, {
+    refetchQueries: [{ query: QUERY_TASKS }]
+  });
 
   if (loading) return 'Submitting New Task...';
   if (error) return `New Task Submission error! ${error.message}`;
@@ -20,7 +21,8 @@ function AddTodo() {
     // On submit get values of the entered body and score
     const body = bodyRef.current.value;
     const scoreValue = Number(scoreRef.current.value);
-
+    // Default value of new to-do items check
+    const checked = false;
     // Pass in values to 
     addTodo({ variables: { body, checked, scoreValue } });
 

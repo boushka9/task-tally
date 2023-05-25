@@ -13,16 +13,16 @@ export const Login = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await login({
+      const result = await login({
         variables: { ...formState },
-        // { email: formState.email, password: formState.password },
       });
-      const token = data.login.token;
+      const token = result.data.login.token;
       Auth.login(token);
+      setFormState({ username: '', password: '' }); // Clear form inputs
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;

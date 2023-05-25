@@ -32,6 +32,7 @@ body {
   min-height: 100vh;
   color: var(--dark);
   width: 100%;
+  position: relative;
 }
 
 header {
@@ -138,10 +139,19 @@ button:hover {
   color: var(--jade);
 }
 
+.auth-login {
+  text-decoration: none;
+  color: var(--orange)
+}
+
+.auth-login:hover {
+  color: var(--medium)
+}
+
 .App-footer {
-  /* position: absolute;
+  position: absolute;
   bottom: 0;
-  width: 100%; */
+  width: 100%;
   flex-shrink: 0;
 }
 
@@ -202,12 +212,6 @@ button:hover {
   align-items: center; /* Creates space for the form at the bottom */
 }
 
-/* WHEN AN ITEM IS CHECKED ITS ELEMENT IS REMOVED FROM THE PAGE
-DISPLAY NONE DOESN'T MAINTAIN THE ELEMENTS SPACE LIKE 'hidden' DOES */
-.checked {
-  display: none;
-}
-
 .new-todo {
   bottom: 8%; 
   /* left: 0; */
@@ -229,6 +233,33 @@ DISPLAY NONE DOESN'T MAINTAIN THE ELEMENTS SPACE LIKE 'hidden' DOES */
 .add-todo-btn {
   margin: 1rem;
 }
+
+/* SCORES PAGE */
+
+.scores-page, .scores-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3% 0;
+}
+
+.scores-container {
+  font-size: 18px;
+  font-weight: 700;
+  background-color: var(--dark);
+  width: 60%;
+  border-radius: 15px;
+}
+
+.current-score {
+  color: var(--jade)
+}
+
+.potential-score {
+  color: var(--orange)
+}
+
 
 @media screen and (min-width: 700px) {
 
@@ -252,6 +283,15 @@ DISPLAY NONE DOESN'T MAINTAIN THE ELEMENTS SPACE LIKE 'hidden' DOES */
 
   .todo-list, .new-todo {
     width: 60%;
+  }
+
+  .scores-container {
+    width: 50%;
+    font-size: 22px;
+  }
+
+  .scores-page {
+    margin: 0;
   }
   
 }
@@ -281,5 +321,10 @@ DISPLAY NONE DOESN'T MAINTAIN THE ELEMENTS SPACE LIKE 'hidden' DOES */
   .new-todo {
     width: 50%;
   }
+
+  .scores-container {
+    width: 30%;
+  }
+  
 
 }

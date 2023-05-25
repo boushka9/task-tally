@@ -12,6 +12,15 @@ export const QUERY_TASKS = gql`
   }
 `;
 
+export const QUERY_SCORES = gql`
+query Tasks {
+  tasks {
+    checked
+    scoreValue
+  }
+}
+`
+
 // Aligns w server side 'user: User' query
 export const QUERY_USER = gql`
 query user($username: String!) {
