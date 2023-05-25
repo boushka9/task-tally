@@ -1,4 +1,4 @@
-const API_KEY = "h037C02e7gcSnjrPpLPt7g==CaOU09qBsjKkkMyn";
+const apiKey = process.env.apiKey
 
 import React, { useEffect, useState } from 'react';
 
@@ -14,7 +14,7 @@ const QuoteCard = () => {
         // Make the API request
         const response = await fetch(`https://api.api-ninjas.com/v1/quotes?category=${category}`, {
           headers: {
-            'X-Api-Key': API_KEY
+            'X-Api-Key': apiKey
           }
         });
         // Check for errors in the API response
