@@ -14,23 +14,19 @@ const TodoList = () => {
     const [todos, setTodos] = useState(taskData ? taskData.tasks : []);
   
 
-
-
   const { data, loading, error } = useMutation(REMOVE_TASK);
-
-
 
 
   // when an item is checked the todos array will be updated to reflect the change from checked: false to true
   const handleCheck = (item) => {
     const updatedTodos = [...todos];
+
     updatedTodos[item].checked = !updatedTodos[item].checked;
-    
+
     setTodos(updatedTodos);
     // renderTasks.refetch(); // Use the refetch query function to refetch the tasks
   };
   
-
 
   // Remove the selected item in array w splice method and then setTodos state with the updated array
   // const deleteTodo = (item) => {
