@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { QUERY_TASKS } from '../utils/queries';
+import ToDoneItem from '../components/ToDoneItem';
 
-// pass in todos object as a prop
-const CheckedToDones = ({ todos }) => {
-    // Filter the passed in prop for the items that are checked
-  const checkedTodos = todos.filter((todo) => todo.checked);
+const ToDoneList = () => {
+  const { data: taskData, loading: loadingRender, error: renderError } = useQuery(QUERY_TASKS);
+
+  const [todos, setTodos] = useState([]);
+
+  // Filter the taskData array to get only the items with checked: true
+  useEffect(() => {
+    if (taskData) {
+      const checkedTodos = taskData.tasks.filter(todo => todo.checked === true);
+      setTodos(checkedTodos);
+    }
+  }, [taskData]);
+
+  if (loadingRender) return 'Loading Tasks...';
+  if (renderError) return `Error Rendering Tasks! ${renderError.message}`;
 
   return (
-    <div className="checked-todos">
-      <h1>To-Dones</h1>
-      {/* If array of checked todo items is empty display 'Uh Oh' message, otherwise display list of completed todo items */}
-      <ul className="checked-list">
-        {checkedTodos.length > 0 ? (
-          checkedTodos.map((todo, index) => (
-            <li key={index}>{todo.text}</li>
-          ))
-        ) : (
-          <li>Uh Oh! It looks like you haven't completed any of your tasks yet. Come back here once you've checked a couple off your tally to track your progress!</li>
-        )}
-      </ul>
+    <div className='to-do-page'>
+      <h1>To-Done List</h1>
+      <div className="todo-list">
+        <ul className="todo-items">
+          {todos.map((todo, item) => (
+            <ToDoneItem
+              key={item}
+              todo={todo}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
 
-export default CheckedToDones;
+export default ToDoneList;

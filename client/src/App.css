@@ -205,7 +205,7 @@ button:hover {
 /* WHEN AN ITEM IS CHECKED ITS ELEMENT IS REMOVED FROM THE PAGE
 DISPLAY NONE DOESN'T MAINTAIN THE ELEMENTS SPACE LIKE 'hidden' DOES */
 .checked {
-  display: none;
+  /* display: none; */
 }
 
 .new-todo {
