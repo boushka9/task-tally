@@ -1,47 +1,49 @@
 import React, { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 // import Auth from "../utils/auth";
 // Pass in component
-import ToDoItem from '../components/ToDo';
+import ToDoItem from '../components/ToDoItem';
 import NewTodoForm from '../components/NewToDo';
 import { QUERY_TASKS } from '../utils/queries';
 
 const TodoList = () => {
-  const { data: taskData, loading: loadingRender, error: renderError} = useQuery(QUERY_TASKS);
-  
-  console.log(taskData)  
+  const { data: taskData, loading: loadingRender, error: renderError } = useQuery(QUERY_TASKS);
+  const [checkedTodoIds, setCheckedTodoIds] = useState([]);
 
-  // Initialize the state for tasks in DB, else empty array to hold all todos
-  const [todos, setTodos] = useState(taskData ? taskData.tasks : []);
-
+  console.log(taskData);
 
   if (loadingRender) return 'Loading Tasks...';
   if (renderError) return `Error Rendering Tasks! ${renderError.message}`;
 
- 
+  const handleCheck = (todoId) => {
+    setCheckedTodoIds((prevIds) => {
+      if (prevIds.includes(todoId)) {
+        return prevIds.filter((id) => id !== todoId);
+      }
+      return [...prevIds, todoId];
+    });
+  };
 
   return (
     <div className='to-do-page'>
-        <h1>Todo List</h1>
-        <div className="todo-list">
-          {/* Map over only the to-do items that have not been completed (unchecked) */}
-          <ul className="todo-items">
-            {todos.map((todo, item) => (
-                // Pass in To-Do item components and logic to handle check-marked/completed tasks and deleted to-dos
-              <ToDoItem
-                key={item}
-                todo={todo}
-                // onCheck={() => handleCheck(item)} //When item is checked off as completed
-                // onDelete={() => deleteTodo(item)} //When item is deleted
-              />
-            ))}
-          </ul>
-        </div>
-        <NewTodoForm />
+      <h1>Todo List</h1>
+      <div className="todo-list">
+        <ul className="todo-items">
+          {taskData.tasks.map((todo) => (
+            <ToDoItem
+              key={todo.id}
+              todo={todo}
+              onCheck={handleCheck}
+              checked={checkedTodoIds.includes(todo.id)}
+            />
+          ))}
+        </ul>
+      </div>
+      <NewTodoForm />
     </div>
   );
 };
 
-export default TodoList;
 
+export default TodoList;
 

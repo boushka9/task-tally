@@ -85,6 +85,11 @@ removeTask: async (parent, { taskId }) => {
   return Task.findOneAndDelete({ _id: taskId });
 },
 
+// Update task by ID to change checked boolean, return updated document as query
+updateTask: async (parent, { id, checked }) => {
+  return Task.findByIdAndUpdate(id, { checked }, { new: true })
+},
+
 //TODO:get scores unless front end can do the thing
 
 
