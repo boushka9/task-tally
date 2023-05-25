@@ -1,13 +1,43 @@
-
 const jwt = require('jsonwebtoken');
 
-const secret = 'mysecretshhh';
-const expiration = '2h'; // Token will last for 2 hrs
+const secret = 'mysecretsshhh';
+const expiration = '2h';
 
-// On sign in the email, username, and _id are passed in to create and return the JWT auth token
 module.exports = {
-  signToken: function ({ email, username, _id }) {
-    const payload = { email, username, _id };
-    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  authMiddleware: function ({ req }) {
+    let token = req.body.token || req.query.token || req.headers.authorization;
+
+    if (req.headers.authorization) {
+      token = token
+        .split(' ')
+        .pop()
+        .trim();
+    }
+
+    console.log("token", token)
+
+
+    if (!token) {
+      return req;
+    }
+
+    try {
+      const { data } = jwt.verify(token, secret, { expiresIn: expiration });
+      req.user = data;
+    }
+    catch {
+      console.log('Invalid token');
+    }
+
+    return req;
   },
+  signToken: function ({ username, password }) {
+    const payload = { username, password };
+
+    return jwt.sign(
+      { data: payload },
+      secret,
+      { expiresIn: expiration }
+    );
+  }
 };

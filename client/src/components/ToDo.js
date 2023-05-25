@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Pass in check
+// Receives the 'todo' object, & onCheck/onDelete functions as props 
 const ToDoItem = ({ todo, onCheck, onDelete }) => {
   return (
     <div className={todo.checked ? 'checked' : 'un-checked'}> 
