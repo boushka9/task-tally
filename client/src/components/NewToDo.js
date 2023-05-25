@@ -19,10 +19,10 @@ function AddTodo() {
     e.preventDefault();
     // On submit get values of the entered body and score
     const body = bodyRef.current.value;
-    const score = Number(scoreRef.current.value);
+    const scoreValue = Number(scoreRef.current.value);
 
     // Pass in values to 
-    addTodo({ variables: { body, checked, score } });
+    addTodo({ variables: { body, checked, scoreValue } });
 
     // Reset/clear value of input element after submit
     bodyRef.current.value = '';
@@ -30,11 +30,11 @@ function AddTodo() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input ref={bodyRef} type="text" placeholder="Add a New Task to Your Tally!" />
-        <input ref={scoreRef} type="number" placeholder="Points Per Task.." />
-        <button type="submit">Add Todo</button>
+    <div className='new-todo'>
+      <form className='new-form' onSubmit={handleSubmit}>
+        <input className='form-input' ref={bodyRef} type="text" placeholder="Add a New Task to Your Tally!" />
+        <input className='form-input' ref={scoreRef} type="number" placeholder="Points Per Task.." />
+        <button className='add-todo-btn' type="submit">Add Todo</button>
       </form>
     </div>
   );

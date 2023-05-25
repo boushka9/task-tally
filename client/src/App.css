@@ -203,15 +203,26 @@ button:hover {
 }
 
 .new-todo {
-  position: absolute;
-  bottom: 8%; /* Position the form 15% up from the bottom */
-  left: 0;
-  width: 100%;
+  bottom: 8%; 
+  /* left: 0; */
+  width: 60%;
   padding: 20px;
-  
+  margin-top: 3.5rem;
 }
 
+.new-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
 
+.form-input {
+ display: inline;
+}
+
+.add-todo-btn {
+  margin: 1rem;
+}
 
 @media screen and (min-width: 700px) {
 
@@ -233,8 +244,8 @@ button:hover {
     font-size: 30px;
   }
 
-  .todo-list {
-    width: 85%;
+  .todo-list, .new-todo {
+    width: 60%;
   }
   
 }
@@ -260,4 +271,9 @@ button:hover {
   .todo-list {
     width: 69%;
   }
+
+  .new-todo {
+    width: 50%;
+  }
+
 }

@@ -28,10 +28,8 @@ export const ADD_TASK = gql`
   mutation addTask($body: String!, $scoreValue: Int!) {
     addTask(body: $body, scoreValue: $scoreValue) {
       _id
-      createdAt
       scoreValue
       body
-      userId
       checked
     }
   }

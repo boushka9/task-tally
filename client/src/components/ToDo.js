@@ -5,7 +5,7 @@ const ToDoItem = ({ todo, onCheck, onDelete }) => {
   return (
     <div className={todo.checked ? 'checked' : 'un-checked'}> 
       <li className='to-do-li'>
-        <h2 className='score'>{todo.score} Points</h2>
+        <h2 className='score'>{todo.scoreValue} Points</h2>
         <div className='check-bx'>
           <input 
             type="checkbox"
