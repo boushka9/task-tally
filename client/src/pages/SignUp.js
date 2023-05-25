@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export const SignUp = (props) => {
   // use State will allow change and save the previous data
-  const [formState, setFormState] = useState({ username: '',email: '', password: '' });
+  const [formState, setFormState] = useState({ username: '', password: '' });
   // Need the the 'ADD_USER' mutation to allow to add a new user
  const [addUser, { error, data }] = useMutation(ADD_USER)
   // The function will retrieve the data provided in the form that will be sent to create a new User
@@ -46,8 +46,6 @@ const handleChange = (event) => {
       <label forhtml="username">Enter User Name</label>
       {/* the onChange listener will allow reach to display in real time the changes that are occurring */}
       <input name="username" placeholder="TheRealShrimp" value={formState.username} onChange={handleChange}/>
-      <label forhtml="email">Email:</label>
-      <input value={formState.email} onChange={handleChange} name="email" type="email" placeholder="Example@gmail.com"/>
       <label forhtml="password">Password:</label>
       <input value={formState.password} onChange={handleChange} name="password" type="password" placeholder=""/>
       <button className="sign-up">Sign Up</button>
