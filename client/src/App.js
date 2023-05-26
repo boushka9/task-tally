@@ -21,7 +21,7 @@ import './App.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: 'https://task-tally.herokuapp.com/graphql',
 });
 
 
