@@ -22,8 +22,7 @@ const server = new ApolloServer ({
 });
 
 //TODO - ADD APOLLO MIDDLEWARE TO EXPRESS APPLICATION WITH UTILS AND AUTHS
-//server.applyMiddleWare({ app });
-
+app.use(express.static("build"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
