@@ -22,14 +22,17 @@ const server = new ApolloServer ({
     context: authMiddleware,
 });
 
-//TODO - ADD APOLLO MIDDLEWARE TO EXPRESS APPLICATION WITH UTILS AND AUTHS
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Serve static files from the 'build' directory inside the 'client' folder
+app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')));
+
+
+
+// Route all other requests to the React app's 'index.html' file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
 });
 
 const startApolloServer = async () => {
