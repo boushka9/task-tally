@@ -53,12 +53,9 @@ export const REMOVE_TASK= gql`
   mutation RemoveTask($taskId: ID!) {
     removeTask(taskId: $taskId) {
         _id
-        createdAt
         scoreValue
         body
-        userId
         checked
-      
     }
   }
 `;
