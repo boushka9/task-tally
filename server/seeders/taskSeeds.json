@@ -1,0 +1,70 @@
+[
+      {
+        "scoreValue": 15,
+        "body": "Walk dog",
+        "username": "jamieTart",
+        "checked": true
+      },
+      {
+        "scoreValue": 5,
+        "body": "Brush teeth",
+        "username": "pedroPascal",
+        "checked": true
+      },
+      {
+        "scoreValue": -1000,
+        "body": "Text my ex",
+        "username": "elMando",
+        "checked": false
+      },
+      {
+        "scoreValue": 10,
+        "body": "Write grocery list",
+        "username": "ellieFAFO",
+        "checked": false
+      },
+      {
+        "scoreValue": 40,
+        "body": "Go grocery shopping",
+        "username": "dinDjarin",
+        "checked": false
+      },
+      {
+        "scoreValue": 20,
+        "body": "Do load of laundry",
+        "username": "hermioneOwl",
+        "checked": false
+      },
+      {
+        "scoreValue": 60,
+        "body": "FOLD LAUNDRY AFTER!!!!!!",
+        "username": "thisIsTheWay",
+        "checked": false
+      },
+      {
+        "scoreValue": 150,
+        "body": "Present a completed project 3!!!!",
+        "username": "patu50",
+        "checked": false
+      },
+      {
+        "scoreValue": 50,
+        "body": "Get tasks to render",
+        "username": "tiny_lego_frog",
+        "checked": false
+      },
+      {
+        "scoreValue": 10,
+        "body": "Get checked To-Dos to render on To-Done page",
+        "username": "bo-katan-kryze",
+        "checked": false
+      },
+      {
+        "scoreValue": 15,
+        "body": "Find a new book to read",
+        "username": "RoyKent",
+        "checked": false
+      }
+    ]
+  
+

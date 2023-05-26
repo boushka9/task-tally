@@ -1,0 +1,348 @@
+:root {
+  --orange: rgb(255, 160, 122);
+  --dark: #05284c;
+  --medium: #05668d;
+  --jade: #57cc99;
+  --bright: #80ed99;
+  --pale: #c7f9cc;
+  --light: #fefeff;
+  --gray: #f4f6f8;
+}
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Montserrat:ital,wght@0,400;1,700&display=swap');
+
+/* All text apart from headers = Montserrat   >  font-family: 'Montserrat', sans-serif;
+   All headers/titles = Amatic   >  font-family: 'Amatic SC', cursive;
+*/
+
+html,
+body {
+  height: 100%;
+}
+
+.App {
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('./assets/speckle.png');
+  background-color: var(--gray);
+  text-align: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--dark);
+  width: 100%;
+  position: relative;
+}
+
+header {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2 {
+  font-family: 'Amatic SC', cursive;
+}
+
+.logo {
+  width: 35%;
+  margin: 10px 0;
+}
+
+/* LOGIN + SIGN-UP STYLING */
+.form-container, .login-form, .signUp-form{
+  display: flex;
+  flex-direction: column;
+  border: #008B8B;
+  background-color: var(--orange);
+  color: var(--dark);
+  width: 100%;
+}
+
+.login-sign {
+  background-color: var(--orange);
+  padding: 20px;
+  border-radius: 15px;
+  align-self: center;
+  margin-top: 2%;
+  width: 45%;
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background-color: var(--jade);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.login-btn, .sign-up {
+  font-size: 20px;
+  color: var(--dark);
+}
+
+button:hover {
+  background-color: var(--bright);
+}
+
+.link-btn {
+  background: none;
+  color: white;
+  text-decoration:underline ;
+}
+
+.link-btn:hover {
+  background: none;
+  font-display: none;
+  color: var(--dark)
+}
+
+/* NavBar Styling */
+.navBar {
+  align-self: flex-end;
+  display: contents;
+}
+
+.navBarList {
+  display: flex;
+  margin-right: 2%;
+  padding: 0;
+}
+
+.navBarList li {
+  list-style-type: none;
+  margin: 0 15px 0 15px;
+  font-size: 25px;
+}
+
+.navBarList li a {
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.navBarList li a:hover {
+  color: var(--jade);
+}
+
+.auth-login {
+  text-decoration: none;
+  color: var(--orange)
+}
+
+.auth-login:hover {
+  color: var(--medium)
+}
+
+.App-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* TO-DO PAGE + ITEMS STYLING  */
+.todo-items {
+  padding: 0;
+  margin: 10px 12% 10px 12%;
+}
+
+.todo-list {
+  width: 100%;
+}
+
+.to-do-li {
+  display: grid;
+  grid-template-columns: 10% 8% 50% 18%;
+  grid-gap: 5px;
+  background-color: var(--light);
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: 15px 0;
+  box-shadow: 1.2px 2.4px 2.4px rgb(159, 156, 156);
+}
+
+.score {
+  grid-column: 1;
+  color: var(--jade);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.check-bx {
+  grid-column: 2; /* Position column 1 */
+}
+
+.to-do-text {
+  grid-column: 3; /* Position column 2 */
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+}
+
+.del-li {
+  grid-column: 4; /* Position column 3 */
+}
+
+.del-li > button:hover {
+  background-color: var(--orange);
+}
+
+.to-do-page {
+  flex: 1 0 auto;
+  position: relative;
+  padding-bottom: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Creates space for the form at the bottom */
+}
+
+.new-todo {
+  bottom: 8%; 
+  /* left: 0; */
+  width: 60%;
+  padding: 20px;
+  margin-top: 3.5rem;
+}
+
+.new-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.form-input {
+ display: inline;
+}
+
+.add-todo-btn {
+  margin: 1rem;
+}
+
+/* SCORES PAGE */
+
+.scores-page, .scores-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3% 0;
+}
+
+.scores-container {
+  font-size: 18px;
+  font-weight: 700;
+  background-color: var(--dark);
+  width: 60%;
+  border-radius: 15px;
+}
+
+.current-score {
+  color: var(--jade)
+}
+
+.potential-score {
+  color: var(--orange)
+}
+
+/* QUOTE CARD */
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--pale);
+  border-radius: 15px;
+  color: var(--dark);
+  padding: 20px;
+  margin: 7% 5% 0 5%;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+@media screen and (min-width: 700px) {
+
+  .logo {
+    width: 25%;
+    margin-left: 15px;
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .navBar {
+    margin-right: 15px;
+  }
+
+  .navBarList li {
+    font-size: 30px;
+  }
+
+  .todo-list, .new-todo {
+    width: 60%;
+  }
+
+  .scores-container {
+    width: 50%;
+    font-size: 22px;
+  }
+
+  .scores-page {
+    margin: 0;
+  }
+  
+}
+
+
+
+@media screen and (min-width: 992px) {
+
+  .App {
+    justify-content: flex-start;
+  }
+  .logo {
+    margin-top: 15px;
+    width: 15%;
+  }
+
+  .navBarList li {
+    font-size: 35px;
+  }
+
+  .login-sign {
+    width: 30%;
+  }
+
+  .todo-list {
+    width: 69%;
+  }
+
+  .new-todo {
+    width: 50%;
+  }
+
+  .scores-container {
+    width: 30%;
+  }
+  
+
+}
