@@ -23,13 +23,11 @@ const server = new ApolloServer ({
 });
 
 //TODO - ADD APOLLO MIDDLEWARE TO EXPRESS APPLICATION WITH UTILS AND AUTHS
-app.use(express.static("build"));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 
 const startApolloServer = async () => {
     await server.start();
