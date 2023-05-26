@@ -52,8 +52,10 @@ export const UPDATE_TASK = gql`
 export const REMOVE_TASK= gql`
   mutation RemoveTask($taskId: ID!) {
     removeTask(taskId: $taskId) {
-      _id
-      body
+        _id
+        scoreValue
+        body
+        checked
     }
   }
 `;
