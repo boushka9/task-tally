@@ -69,6 +69,7 @@ h1, h2 {
   border-radius: 15px;
   align-self: center;
   margin-top: 2%;
+  width: 45%;
 }
 
 label {
@@ -260,6 +261,21 @@ button:hover {
   color: var(--orange)
 }
 
+/* QUOTE CARD */
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--pale);
+  border-radius: 15px;
+  color: var(--dark);
+  padding: 20px;
+  margin: 7% 5% 0 5%;
+  font-size: 20px;
+  font-weight: 700;
+}
+
 
 @media screen and (min-width: 700px) {
 
@@ -295,6 +311,8 @@ button:hover {
   }
   
 }
+
+
 
 @media screen and (min-width: 992px) {
 
