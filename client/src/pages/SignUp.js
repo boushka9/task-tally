@@ -11,7 +11,7 @@ export const SignUp = (props) => {
  const [addUser, { error, data }] = useMutation(ADD_USER)
   // The function will retrieve the data provided in the form that will be sent to create a new User
   const onSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); 
     // will be uncommented once I link to the dataBase
     try {
       const { data } = await addUser({

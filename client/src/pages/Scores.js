@@ -1,6 +1,7 @@
 import { useState, useEffect  } from "react";
 import { QUERY_SCORES } from '../utils/queries';
 import { useQuery } from '@apollo/client';
+import QuoteCard from "../components/QuoteCard";
 // import Data from 'database'
 
 import Auth from '../utils/auth'
@@ -62,7 +63,7 @@ export const UserScores = () => {
           <h1 className="current-score">Current Score: {checkScoreTotal}</h1>
           <h1 className="potential-score">Points left in your tally: {unCheckScoreTotal}</h1>
         </div>
-        
+        <QuoteCard />
       </div>
       ) : (
         <h1><a className="auth-login" href="/">Log in</a> to view your tally score!</h1>
