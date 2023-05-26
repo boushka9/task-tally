@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_TASK } from '../utils/mutations';
+import { REMOVE_TASK } from '../utils/mutations';
 
 // Receives the 'todo' object, & onCheck/onDelete functions as props 
 const ToDoItem = ({ todo, onCheck, onDelete }) => {
 
   // Mutation to update task when checked off
   const [updateTask, { loading, error }] = useMutation(UPDATE_TASK);
-
+ 
+  //Mutation to remove a task
+  const [removeTask, { loading: removeLoading, error: removeError }] = useMutation(REMOVE_TASK);
+ 
   // useState to effect checkbox
   const [checked, setChecked] = useState(todo.checked);
 
@@ -23,8 +27,25 @@ const ToDoItem = ({ todo, onCheck, onDelete }) => {
     }
   };
 
+ 
+  const onDelete = async () => {
+    try {
+      await removeTask({
+        variables: {
+          taskId: todo._id
+        }
+      });
+      // Perform any additional actions after successful deletion, if needed
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
+
   if (loading) return 'Updating task...';
   if (error) return `Error updating task: ${error.message}`;
+  if (removeLoading) return 'Deleting task...';
+  if (removeError) return `Error deleting task: ${error.message}`;
 
   return (
     <div className={todo.checked ? 'checked' : 'un-checked'}> 
