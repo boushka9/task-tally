@@ -1,6 +1,7 @@
 //requiring vital packages
 const express = require('express');
 const db = require('./config/connection');
+const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
 const {typeDefs, resolvers } = require('./schemas');
 //PLACEHOLDER - DOES NOT EXIST YET
@@ -26,7 +27,9 @@ app.use(express.static("build"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//confirmation messages
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 const startApolloServer = async () => {
     await server.start();
