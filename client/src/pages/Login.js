@@ -41,7 +41,7 @@ export const Login = (props) => {
       (
         <form onSubmit={onSubmit} className="login-form"> 
       <label htmlFor="username">Username:</label>
-      <input name="username" value={formState.username} onChange={handleChange} type="username" placeholder="" />
+      <input name="username" value={formState.username} onChange={handleChange} type="username" placeholder="TheShrimp" />
       <label htmlFor="password">Password:</label>
       <input  onChange={handleChange} type="password" placeholder="" name="password" value={formState.password}/>
       {error ? (

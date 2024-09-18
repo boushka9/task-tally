@@ -10,7 +10,7 @@ const QuoteCard = () => {
     // Function to fetch the quote from the API
     const fetchQuote = async () => {
       try {
-        const category = 'change';
+        const category = 'success';
         // Make the API request
         const response = await fetch(`https://api.api-ninjas.com/v1/quotes?category=${category}`, {
           headers: {

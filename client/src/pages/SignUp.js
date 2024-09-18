@@ -45,7 +45,7 @@ const handleChange = (event) => {
         <form onSubmit={onSubmit} className="signUp-form"> 
       <label forhtml="username">Enter User Name</label>
       {/* the onChange listener will allow reach to display in real time the changes that are occurring */}
-      <input name="username" placeholder="" value={formState.username} onChange={handleChange}/>
+      <input name="username" placeholder="TheRealShrimp" value={formState.username} onChange={handleChange}/>
       <label forhtml="password">Password:</label>
       <input value={formState.password} onChange={handleChange} name="password" type="password" placeholder=""/>
       <button className="sign-up">Sign Up</button>
