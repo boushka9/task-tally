@@ -14,7 +14,7 @@ const QuoteCard = () => {
         // Make the API request
         const response = await fetch(`https://api.api-ninjas.com/v1/quotes?category=${category}`, {
           headers: {
-            'X-Api-Key': apiKey
+            'X-Api-Key': "h037C02e7gcSnjrPpLPt7g==CaOU09qBsjKkkMyn"
           }
         });
         // Check for errors in the API response
